@@ -1,7 +1,38 @@
 import logo from './logo.svg';
 import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import {CustomersTable} from "./Components/Pages/customers.component";
+import {AddressesTable} from "./Components/Pages/addresses.component";
 
-function App() {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+        <Router>
+
+          <Switch>
+            <Route path={"/customers"}>
+              <CustomersTable/>
+            </Route>
+            <Route path={"/addresses"}>
+              <AddressesTable/>
+            </Route>
+          </Switch>
+
+        </Router>
+    )
+  }
+}
+/*function App() {
   return (
     <div className="App">
       <header className="App-header">
@@ -20,6 +51,6 @@ function App() {
       </header>
     </div>
   );
-}
+}*/
 
 export default App;
