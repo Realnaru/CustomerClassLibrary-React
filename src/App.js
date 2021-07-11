@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import {CustomersTable} from "./Components/Pages/customers.component";
 import {AddressesTable} from "./Components/Pages/addresses.component";
+import {NotesTable} from "./Components/Pages/notes.component";
 
 class App extends React.Component {
   constructor(props) {
@@ -25,6 +26,9 @@ class App extends React.Component {
             </Route>
             <Route path={"/addresses"}>
               <AddressesTable/>
+            </Route>
+            <Route path={"/notes"}>
+              <NotesTable/>
             </Route>
           </Switch>
 

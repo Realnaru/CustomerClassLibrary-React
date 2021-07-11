@@ -19,4 +19,13 @@ module.exports = function(app) {
             logLevel: 'debug',
         })
     );
+    app.use(
+        '/api/Notes',
+        createProxyMiddleware({
+            target: 'https://localhost:5001/',
+            secure: false,
+            changeOrigin: true,
+            logLevel: 'debug',
+        })
+    );
 };

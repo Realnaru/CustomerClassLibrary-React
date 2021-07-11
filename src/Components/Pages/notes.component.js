@@ -2,20 +2,20 @@ import React from "react";
 import {Link, Redirect} from "react-router-dom";
 const queryString = require('query-string');
 
-export class AddressesTable extends React.Component{
+export class NotesTable extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            addresses: [],
+            notes: [],
             isLoaded: false
         };
     };
 
     componentDidMount() {
-        fetch('/api/Addresses/' + window.location.search).then(result => {
+        fetch('/api/Notes/' + window.location.search).then(result => {
             return result.json().then(data => {
-                this.setState({addresses: data, isLoaded: true})
+                this.setState({notes: data, isLoaded: true})
             })
         })
     }
@@ -28,10 +28,10 @@ export class AddressesTable extends React.Component{
                 </div>
             );
         } else {
-            if (this.state.isLoaded && this.state.addresses.length === 0){
+            if (this.state.isLoaded && this.state.notes.length === 0){
                 return (
                     <div>
-                        <h3>No addresses</h3>
+                        <h3>No notes</h3>
                     </div>
                 );
             } else {
@@ -39,17 +39,11 @@ export class AddressesTable extends React.Component{
                     <table className={'text-center'}>
                         <tbody>
                         <tr>
-                            <th>Address line</th>
-                            <th>Address line 2</th>
-                            <th>Address type</th>
-                            <th>City</th>
-                            <th>Postal code</th>
-                            <th>State</th>
-                            <th>Country</th>
+                            <th>Note</th>
                             <th>Actions</th>
                         </tr>
-                        {this.state.addresses.map(address => {
-                            return <TableRow key={address.addressId} address={address}/>
+                        {this.state.notes.map(note => {
+                            return <TableRow key={note.noteId} note={note}/>
                         })}
                         </tbody>
                     </table>
@@ -61,20 +55,15 @@ export class AddressesTable extends React.Component{
 
 class TableRow extends React.Component {
     render() {
-        const address = this.props.address;
+        const note = this.props.note;
         return (
             <tr>
-                <td>{address.adressLine}</td>
-                <td>{address.adressLine2}</td>
-                <td>{address.addressType}</td>
-                <td>{address.city}</td>
-                <td>{address.postalCode}</td>
-                <td>{address.state}</td>
-                <td>{address.country}</td>
+                <td>{note.note}</td>
                 <td><Link to={'/'}>Edit</Link>&nbsp;
                     <Link to={'/'}>Details</Link>&nbsp;
                     <Link to={'/'}>Delete</Link></td>
             </tr>
         )
     }
+
 }

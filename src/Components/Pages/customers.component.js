@@ -67,7 +67,7 @@ class TableRow extends React.Component {
                 <td>{customer.lastName}</td>
                 <td>{customer.phoneNumber}</td>
                 <td><Link to={'/addresses/?customerId=' + customer.customerId}>Addresses</Link></td>
-                <td><Link to={'/'}>Notes</Link></td>
+                <td><Link to={'/notes/?customerId=' + customer.customerId}>Notes</Link></td>
                 <td>{customer.email}</td>
                 <td>{customer.totalPurshasesAmount}</td>
                 <td><Link to={'/'}>Edit</Link>&nbsp;
