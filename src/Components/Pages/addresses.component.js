@@ -36,23 +36,27 @@ export class AddressesTable extends React.Component{
                 );
             } else {
                 return(
-                    <table className={'text-center'}>
-                        <tbody>
-                        <tr>
-                            <th>Address line</th>
-                            <th>Address line 2</th>
-                            <th>Address type</th>
-                            <th>City</th>
-                            <th>Postal code</th>
-                            <th>State</th>
-                            <th>Country</th>
-                            <th>Actions</th>
-                        </tr>
-                        {this.state.addresses.map(address => {
-                            return <TableRow key={address.addressId} address={address}/>
-                        })}
-                        </tbody>
-                    </table>
+                    <div className={'text-center'}>
+                        <table className={'text-center'}>
+                            <tbody>
+                            <tr>
+                                <th>Address line</th>
+                                <th>Address line 2</th>
+                                <th>Address type</th>
+                                <th>City</th>
+                                <th>Postal code</th>
+                                <th>State</th>
+                                <th>Country</th>
+                                <th>Actions</th>
+                            </tr>
+                            {this.state.addresses.map(address => {
+                                return <TableRow key={address.addressId} address={address}/>
+                            })}
+                            </tbody>
+                        </table>
+                        <Link to={'/customers/'}>Back to customer list</Link>
+                    </div>
+
                 )
             }
         }
@@ -73,7 +77,10 @@ class TableRow extends React.Component {
                 <td>{address.country}</td>
                 <td><Link to={'/'}>Edit</Link>&nbsp;
                     <Link to={'/addresses/' + address.addressId}>Details</Link>&nbsp;
-                    <Link to={'/'}>Delete</Link></td>
+                    <Link onClick={() => {
+                        fetch('/api/addresses/' + address.addressId,{method: 'DELETE'});
+                        window.location.href = '/addresses/?customerId=' + address.customerId;
+                    }}>Delete</Link></td>
             </tr>
         )
     }

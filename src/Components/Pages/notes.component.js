@@ -36,17 +36,21 @@ export class NotesTable extends React.Component {
                 );
             } else {
                 return(
-                    <table className={'text-center'}>
-                        <tbody>
-                        <tr>
-                            <th>Note</th>
-                            <th>Actions</th>
-                        </tr>
-                        {this.state.notes.map(note => {
-                            return <TableRow key={note.noteId} note={note}/>
-                        })}
-                        </tbody>
-                    </table>
+                    <div className={'text-center'}>
+                        <table className={'text-center'}>
+                            <tbody>
+                            <tr>
+                                <th>Note</th>
+                                <th>Actions</th>
+                            </tr>
+                            {this.state.notes.map(note => {
+                                return <TableRow key={note.noteId} note={note}/>
+                            })}
+                            </tbody>
+                        </table>
+                        <Link to={'/customers/'}>Back to customer list</Link>
+                    </div>
+
                 )
             }
         }
@@ -60,7 +64,10 @@ class TableRow extends React.Component {
             <tr>
                 <td>{note.note}</td>
                 <td><Link to={'/'}>Edit</Link>&nbsp;
-                    <Link to={'/'}>Delete</Link></td>
+                    <Link onClick={() => {
+                        fetch('/api/notes/' + note.noteId,{method: 'DELETE'});
+                        window.location.href = '/notes/?customerId=' + note.customerId;
+                    }}>Delete</Link></td>
             </tr>
         )
     }

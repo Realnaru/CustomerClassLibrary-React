@@ -60,6 +60,7 @@ export class CustomersTable extends  React.Component{
 }
 
 class TableRow extends React.Component {
+
     render() {
         const customer = this.props.customer;
         return(
@@ -72,7 +73,11 @@ class TableRow extends React.Component {
                 <td>{customer.totalPurshasesAmount}</td>
                 <td><Link to={'/'}>Edit</Link>&nbsp;
                     <Link to={'/customers/' + customer.customerId}>Details</Link>&nbsp;
-                    <Link to={'/'}>Delete</Link></td></tr>
+                    <Link to={'/customers/'} onClick={() => {
+                        fetch('/api/customers/' + customer.customerId,{method: 'DELETE'});
+                        window.location.reload();
+                    }}
+                    >Delete</Link></td></tr>
         )
     }
 
