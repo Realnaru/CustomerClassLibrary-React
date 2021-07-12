@@ -10,6 +10,8 @@ import {
 import {CustomersTable} from "./Components/Pages/customers.component";
 import {AddressesTable} from "./Components/Pages/addresses.component";
 import {NotesTable} from "./Components/Pages/notes.component";
+import {CustomerDetails} from "./Components/Pages/customer.component";
+import {AddressDetails} from "./Components/Pages/address.component";
 
 class App extends React.Component {
   constructor(props) {
@@ -21,15 +23,11 @@ class App extends React.Component {
         <Router>
 
           <Switch>
-            <Route path={"/customers"}>
-              <CustomersTable/>
-            </Route>
-            <Route path={"/addresses"}>
-              <AddressesTable/>
-            </Route>
-            <Route path={"/notes"}>
-              <NotesTable/>
-            </Route>
+            <Route path={"/customers"} exact={true} component={CustomersTable}/>
+            <Route path={"/customers/:id"} component={CustomerDetails}/>
+            <Route path={"/addresses"} exact={true} component={AddressesTable}/>
+            <Route path={"/addresses/:id"} component={AddressDetails}/>
+            <Route path={"/notes"} component={NotesTable}/>
           </Switch>
 
         </Router>

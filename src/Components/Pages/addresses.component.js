@@ -72,7 +72,7 @@ class TableRow extends React.Component {
                 <td>{address.state}</td>
                 <td>{address.country}</td>
                 <td><Link to={'/'}>Edit</Link>&nbsp;
-                    <Link to={'/'}>Details</Link>&nbsp;
+                    <Link to={'/addresses/' + address.addressId}>Details</Link>&nbsp;
                     <Link to={'/'}>Delete</Link></td>
             </tr>
         )

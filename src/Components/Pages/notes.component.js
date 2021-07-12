@@ -60,7 +60,6 @@ class TableRow extends React.Component {
             <tr>
                 <td>{note.note}</td>
                 <td><Link to={'/'}>Edit</Link>&nbsp;
-                    <Link to={'/'}>Details</Link>&nbsp;
                     <Link to={'/'}>Delete</Link></td>
             </tr>
         )
