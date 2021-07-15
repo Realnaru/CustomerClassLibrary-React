@@ -21,16 +21,16 @@ export class NoteAddForm extends React.Component {
                     // }}
                     onSubmit={(values) => {
                         let note ={
-                            customerId: this.props.match.params.id,
                             noteId: 0,
+                            customerId: (Number)(this.props.match.params.id),
                             note: values.note
                         }
                         fetch('/api/Notes/',
-                            {method: "POST", body: JSON.stringify({note}), headers: {
-                                    //'Accept': 'application/json',
-                                    //'Content-Type': 'application/json'
+                            {method: "POST", body: JSON.stringify(note), headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/json'
                                 }}).then(response => {console.log(response)});
-                        console.log(JSON.stringify(note));
+                        console.log(JSON.stringify(note, null, 2));
                     }}
                 >
                     <Form>

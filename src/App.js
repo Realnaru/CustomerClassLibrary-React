@@ -17,6 +17,7 @@ import {CustomerAddForm} from "./Components/Pages/customer.add.component";
 import {AddressEditForm} from "./Components/Pages/address.edit.component";
 import {NoteEditForm} from "./Components/Pages/note.edit.component";
 import {NoteAddForm} from "./Components/Pages/note.add.component";
+import {AddressAddForm} from "./Components/Pages/address.add.component";
 
 class App extends React.Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class App extends React.Component {
             <Route path={"/customers/:id/edit"} component={CustomerEditForm}/>
             <Route path={"/customers/add"} exact={true} component={CustomerAddForm}/>
             <Route path={"/addresses"} exact={true} component={AddressesTable}/>
+            <Route path={"/addresses/:id/add"} exact={true} component={AddressAddForm}/>
             <Route path={"/addresses/:id/edit"} exact={true} component={AddressEditForm}/>
             <Route path={"/addresses/:id"} component={AddressDetails}/>
             <Route path={"/notes/:id/edit"} component={NoteEditForm}/>

@@ -29,17 +29,22 @@ export class NoteEditForm extends React.Component {
                     //     alert(JSON.stringify(values, null, 2));
                     // }}
                     onSubmit={(values) => {
+                        const note = {
+                            noteId: values.noteId,
+                            customerId: values.customerId,
+                            note: values.note
+                        }
                         fetch('/api/Notes/' + this.props.match.params.id,
-                            {method: "PUT", body: JSON.stringify({values}), headers: {
-                                    'Accept': 'application/json',
-                                    //'Content-Type': 'application/json;charset=UTF-8'
+                            {method: "PUT", body: JSON.stringify(note), headers: {
+                                    //'Accept': 'application/json',
+                                    'Content-Type': 'application/json'
                                 }}).then(response => {console.log(response)});
-                        console.log(JSON.stringify(values));
+                        console.log(JSON.stringify(note));
                     }}
                 >
                     <Form>
-                        <label htmlFor="note">First Name</label>
-                        <Field id="note" name="note" placeholder="Note" /><br/>
+                        <label htmlFor="note">Note</label>
+                        <Field id="Note" name="note" placeholder="Note" /><br/>
 
                         <button type="submit">Submit</button>
                     </Form>

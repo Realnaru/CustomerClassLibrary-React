@@ -26,8 +26,8 @@ export class CustomerAddForm extends React.Component {
                             lastName: values.lastName,
                             phoneNumber: values.phoneNumber,
                             email: values.email,
-                            totalPurchasesAmount: values.totalPurchasesAmount,
-                            addressesList: [
+                            totalPurshasesAmount: (Number)(values.totalPurchasesAmount),
+                            adressesList: [
                                 {
                                     adressLine: values.adressLine,
                                     adressLine2: values.adressLine2,
@@ -46,7 +46,7 @@ export class CustomerAddForm extends React.Component {
                         }
 
                         fetch('/api/Customers/',
-                            {method: "POST", body: JSON.stringify({customer}), headers: {
+                            {method: "POST", body: JSON.stringify(customer), headers: {
                                     //'Accept': 'application/json',
                                     'Content-Type': 'application/json'
                                 }}).then(response => {console.log(response)});

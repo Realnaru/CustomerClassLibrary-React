@@ -65,9 +65,10 @@ class TableRow extends React.Component {
             <tr>
                 <td>{note.note}</td>
                 <td><Link to={'/notes/' + note.noteId + '/edit'}>Edit</Link>&nbsp;
-                    <Link onClick={() => {
-                        fetch('/api/notes/' + note.noteId,{method: 'DELETE'});
-                        window.location.href = '/notes/?noteId=' + note.noteId;
+                    <Link to={'delete'} onClick={() => {
+                        fetch('/api/Notes/' + note.noteId,{method: 'DELETE'});
+                        //window.location.href = '/notes/?customerId=' + note.customerId;
+
                     }}>Delete</Link></td>
             </tr>
         )

@@ -31,9 +31,9 @@ export class AddressEditForm extends React.Component {
                     // }}
                     onSubmit={(values) => {
                         fetch('/api/Addresses/' + this.props.match.params.id,
-                            {method: "PUT", body: JSON.stringify({values}), headers: {
+                            {method: "PUT", body: JSON.stringify(values), headers: {
                                     //'Accept': 'application/json',
-                                    //'Content-Type': 'application/json;charset=UTF-8'
+                                    'Content-Type': 'application/json'
                                 }}).then(response => {console.log(response)});
                         console.log(JSON.stringify(values));
                     }}

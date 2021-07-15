@@ -37,6 +37,7 @@ export class AddressesTable extends React.Component{
             } else {
                 return(
                     <div className={'text-center'}>
+                        <Link to={"/addresses/" + this.state.addresses[0].customerId + "/add"}>Add new address</Link>
                         <table className={'text-center'}>
                             <tbody>
                             <tr>
@@ -77,8 +78,8 @@ class TableRow extends React.Component {
                 <td>{address.country}</td>
                 <td><Link to={'/addresses/' + address.addressId + '/edit'}>Edit</Link>&nbsp;
                     <Link to={'/addresses/' + address.addressId}>Details</Link>&nbsp;
-                    <Link onClick={() => {
-                        fetch('/api/addresses/' + address.addressId,{method: 'DELETE'});
+                    <Link to={'delete'} onClick={() => {
+                        fetch('/api/Addresses/' + address.addressId,{method: 'DELETE'});
                         window.location.href = '/addresses/?customerId=' + address.customerId;
                     }}>Delete</Link></td>
             </tr>
