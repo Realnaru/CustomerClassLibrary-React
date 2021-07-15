@@ -71,7 +71,7 @@ class TableRow extends React.Component {
                 <td><Link to={'/notes/?customerId=' + customer.customerId}>Notes</Link></td>
                 <td>{customer.email}</td>
                 <td>{customer.totalPurshasesAmount}</td>
-                <td><Link to={'/'}>Edit</Link>&nbsp;
+                <td><Link to={'/customers/' + customer.customerId +'/edit'}>Edit</Link>&nbsp;
                     <Link to={'/customers/' + customer.customerId}>Details</Link>&nbsp;
                     <Link to={'/customers/'} onClick={() => {
                         fetch('/api/customers/' + customer.customerId,{method: 'DELETE'});

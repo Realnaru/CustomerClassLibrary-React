@@ -12,6 +12,7 @@ import {AddressesTable} from "./Components/Pages/addresses.component";
 import {NotesTable} from "./Components/Pages/notes.component";
 import {CustomerDetails} from "./Components/Pages/customer.component";
 import {AddressDetails} from "./Components/Pages/address.component";
+import {CustomerEditForm} from "./Components/Pages/customer.edit";
 
 class App extends React.Component {
   constructor(props) {
@@ -20,39 +21,23 @@ class App extends React.Component {
 
   render() {
     return (
-        <Router>
+        <>
 
+        <Router>
+            <Link to={'/customers'}>Customers list</Link>
           <Switch>
             <Route path={"/customers"} exact={true} component={CustomersTable}/>
-            <Route path={"/customers/:id"} component={CustomerDetails}/>
+            <Route path={"/customers/:id" } exact={true} component={CustomerDetails}/>
+            <Route path={"/customers/:id/edit"} component={CustomerEditForm}/>
             <Route path={"/addresses"} exact={true} component={AddressesTable}/>
             <Route path={"/addresses/:id"} component={AddressDetails}/>
             <Route path={"/notes"} component={NotesTable}/>
           </Switch>
 
         </Router>
+        </>
     )
   }
 }
-/*function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}*/
 
 export default App;
