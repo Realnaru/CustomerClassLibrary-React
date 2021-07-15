@@ -36,6 +36,8 @@ export class CustomersTable extends  React.Component{
                 );
             } else {
                 return(
+                    <>
+                        <Link to={"/customers/add"}>Add new customer</Link>
                     <table className={'text-center'}>
                         <tbody>
                         <tr>
@@ -53,6 +55,7 @@ export class CustomersTable extends  React.Component{
                         })}
                         </tbody>
                     </table>
+                    </>
                 )
             }
         }

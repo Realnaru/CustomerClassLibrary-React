@@ -32,7 +32,7 @@ export class CustomerEditForm extends React.Component {
                 onSubmit={(values) => {
                     fetch('/api/Customers/' + this.props.match.params.id,
                         {method: "PUT", body: JSON.stringify({values}), headers: {
-                                'Accept': 'application/json',
+                                //'Accept': 'application/json',
                                 //'Content-Type': 'application/json'
                             }}).then(response => {console.log(response)});
                     console.log(values);

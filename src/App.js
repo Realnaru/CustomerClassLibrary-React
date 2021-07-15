@@ -13,6 +13,7 @@ import {NotesTable} from "./Components/Pages/notes.component";
 import {CustomerDetails} from "./Components/Pages/customer.component";
 import {AddressDetails} from "./Components/Pages/address.component";
 import {CustomerEditForm} from "./Components/Pages/customer.edit";
+import {CustomerAddForm} from "./Components/Pages/customer.add.component";
 
 class App extends React.Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class App extends React.Component {
             <Route path={"/customers"} exact={true} component={CustomersTable}/>
             <Route path={"/customers/:id" } exact={true} component={CustomerDetails}/>
             <Route path={"/customers/:id/edit"} component={CustomerEditForm}/>
+            <Route path={"customers/add"} component={CustomerAddForm}/>
             <Route path={"/addresses"} exact={true} component={AddressesTable}/>
             <Route path={"/addresses/:id"} component={AddressDetails}/>
             <Route path={"/notes"} component={NotesTable}/>
