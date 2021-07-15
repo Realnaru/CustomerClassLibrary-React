@@ -35,7 +35,7 @@ export class CustomerEditForm extends React.Component {
                                 //'Accept': 'application/json',
                                 //'Content-Type': 'application/json'
                             }}).then(response => {console.log(response)});
-                    console.log(values);
+                    console.log(JSON.stringify(values));
                 }}
             >
                 <Form>

@@ -75,7 +75,7 @@ class TableRow extends React.Component {
                 <td>{address.postalCode}</td>
                 <td>{address.state}</td>
                 <td>{address.country}</td>
-                <td><Link to={'/'}>Edit</Link>&nbsp;
+                <td><Link to={'/addresses/' + address.addressId + '/edit'}>Edit</Link>&nbsp;
                     <Link to={'/addresses/' + address.addressId}>Details</Link>&nbsp;
                     <Link onClick={() => {
                         fetch('/api/addresses/' + address.addressId,{method: 'DELETE'});

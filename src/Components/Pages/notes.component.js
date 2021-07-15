@@ -37,6 +37,7 @@ export class NotesTable extends React.Component {
             } else {
                 return(
                     <div className={'text-center'}>
+                        <Link to={'/notes/'+ this.state.notes[0].customerId + '/add'}>Add new</Link>
                         <table className={'text-center'}>
                             <tbody>
                             <tr>
@@ -63,10 +64,10 @@ class TableRow extends React.Component {
         return (
             <tr>
                 <td>{note.note}</td>
-                <td><Link to={'/'}>Edit</Link>&nbsp;
+                <td><Link to={'/notes/' + note.noteId + '/edit'}>Edit</Link>&nbsp;
                     <Link onClick={() => {
                         fetch('/api/notes/' + note.noteId,{method: 'DELETE'});
-                        window.location.href = '/notes/?customerId=' + note.customerId;
+                        window.location.href = '/notes/?noteId=' + note.noteId;
                     }}>Delete</Link></td>
             </tr>
         )
