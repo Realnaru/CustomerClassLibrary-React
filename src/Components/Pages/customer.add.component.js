@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Field, Form } from 'formik';
 import {stringify} from "query-string";
+import setData from "../Common/setdata.component";
 
 export class CustomerAddForm extends React.Component {
     constructor(props) {
@@ -17,10 +18,21 @@ export class CustomerAddForm extends React.Component {
                     initialValues={{
                         firstName: '',
                         lastName: '',
+                        phoneNumber: '',
                         email: '',
+                        totalPurchasesAmount: '',
+                        adressLine: '',
+                        adressLine2: '',
+                        addressType: '',
+                        city: '',
+                        postalCode: '',
+                        state: '',
+                        country: '',
+                        note: ''
                     }}
 
                     onSubmit={(values) => {
+
                         let customer = {
                             firstName: values.firstName,
                             lastName: values.lastName,
@@ -45,12 +57,8 @@ export class CustomerAddForm extends React.Component {
                             ]
                         }
 
-                        fetch('/api/Customers/',
-                            {method: "POST", body: JSON.stringify(customer), headers: {
-                                    //'Accept': 'application/json',
-                                    'Content-Type': 'application/json'
-                                }}).then(response => {console.log(response)});
-                        console.log(JSON.stringify(customer));
+                        setData(customer, '/api/Customers/', "POST");
+                        setTimeout(() => window.location.href = '/customers', 100)
                     }}
                 >
                     <Form>

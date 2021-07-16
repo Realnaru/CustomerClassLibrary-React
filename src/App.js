@@ -27,7 +27,6 @@ class App extends React.Component {
   render() {
     return (
         <>
-
         <Router>
             <Link to={'/customers'}>Customers list</Link>
           <Switch>
@@ -35,7 +34,7 @@ class App extends React.Component {
             <Route path={"/customers/:id/details" } exact={true} component={CustomerDetails}/>
             <Route path={"/customers/:id/edit"} component={CustomerEditForm}/>
             <Route path={"/customers/add"} exact={true} component={CustomerAddForm}/>
-            <Route path={"/addresses"} exact={true} component={AddressesTable}/>
+            <Route path={"/addresses/"} exact={true} component={AddressesTable}/>
             <Route path={"/addresses/:id/add"} exact={true} component={AddressAddForm}/>
             <Route path={"/addresses/:id/edit"} exact={true} component={AddressEditForm}/>
             <Route path={"/addresses/:id"} component={AddressDetails}/>
@@ -49,5 +48,4 @@ class App extends React.Component {
     )
   }
 }
-
 export default App;

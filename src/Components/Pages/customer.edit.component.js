@@ -1,5 +1,7 @@
 import React from "react";
 import { Formik, Field, Form } from 'formik';
+import getData from "../Common/getdata.component";
+import setData from "../Common/setdata.component";
 import {stringify} from "query-string";
 
 export class CustomerEditForm extends React.Component {
@@ -7,35 +9,27 @@ export class CustomerEditForm extends React.Component {
         super(props);
 
         this.state ={
-            customer: {}
+            entity: {}
         }
     }
 
     componentDidMount() {
-        fetch('/api/Customers/' + this.props.match.params.id).then(result => {
-            result.json().then(data => {
-                this.setState({customer: data})
-            })
-        });
+        getData('/api/Customers/' + this.props.match.params.id, this);
     }
+
 
     render(){
         return (
         <div className={'text-center'}>
             <Formik
-                initialValues={this.state.customer}
+                initialValues={this.state.entity}
                 enableReinitialize
-                // onSubmit={async (values) => {
-                //     await new Promise((r) => setTimeout(r, 500));
-                //     alert(JSON.stringify(values, null, 2));
-                // }}
+
                 onSubmit={(values) => {
-                    fetch('/api/Customers/' + this.props.match.params.id,
-                        {method: "PUT", body: JSON.stringify({values}), headers: {
-                                //'Accept': 'application/json',
-                                //'Content-Type': 'application/json'
-                            }}).then(response => {console.log(response)});
-                    console.log(JSON.stringify(values));
+
+                    //this.setData(values);
+                    setData(values,'/api/Customers/' + this.props.match.params.id,'PUT');
+                    setTimeout(() => {window.location.href = '/customers'}, 500);
                 }}
             >
                 <Form>

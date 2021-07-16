@@ -1,41 +1,39 @@
 import React from "react";
 import { Formik, Field, Form } from 'formik';
+import getData from "../Common/getdata.component";
 import {stringify} from "query-string";
+import setData from "../Common/setdata.component";
+
 
 export class AddressEditForm extends React.Component {
     constructor(props) {
         super(props);
 
         this.state ={
-            address: {}
+            entity: {}
         }
     }
 
     componentDidMount() {
-        fetch('/api/Addresses/' + this.props.match.params.id).then(result => {
-            result.json().then(data => {
-                this.setState({address: data})
-            })
-        });
+        // fetch('/api/Addresses/' + this.props.match.params.id).then(result => {
+        //     result.json().then(data => {
+        //         this.setState({address: data})
+        //     })
+        // });
+        getData('/api/Addresses/' + this.props.match.params.id, this)
     }
 
     render(){
         return (
             <div className={'text-center'}>
                 <Formik
-                    initialValues={this.state.address}
+                    initialValues={this.state.entity}
                     enableReinitialize
-                    // onSubmit={async (values) => {
-                    //     await new Promise((r) => setTimeout(r, 500));
-                    //     alert(JSON.stringify(values, null, 2));
-                    // }}
+
                     onSubmit={(values) => {
-                        fetch('/api/Addresses/' + this.props.match.params.id,
-                            {method: "PUT", body: JSON.stringify(values), headers: {
-                                    //'Accept': 'application/json',
-                                    'Content-Type': 'application/json'
-                                }}).then(response => {console.log(response)});
-                        console.log(JSON.stringify(values));
+
+                        setData(values, '/api/Addresses/' + this.props.match.params.id,"PUT")
+                        setTimeout(() => window.location.href = '/addresses/?customerId=' + this.state.entity.customerId, 500)
                     }}
                 >
                     <Form>

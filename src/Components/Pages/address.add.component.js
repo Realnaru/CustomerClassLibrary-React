@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Field, Form } from 'formik';
 import {stringify} from "query-string";
+import setData from "../Common/setdata.component";
 
 export class AddressAddForm extends React.Component {
     constructor(props) {
@@ -22,12 +23,8 @@ export class AddressAddForm extends React.Component {
                             state: "",
                             country: ""
                         }
-
                     }
-                    // onSubmit={async (values) => {
-                    //     await new Promise((r) => setTimeout(r, 500));
-                    //     alert(JSON.stringify(values, null, 2));
-                    // }}
+
                     onSubmit={(values) => {
                         const address ={
                             customerId: (Number)(this.props.match.params.id),
@@ -39,13 +36,11 @@ export class AddressAddForm extends React.Component {
                             state: values.state,
                             country: values.country
                         }
-                        fetch('/api/Addresses/',
-                            {method: "POST", body: JSON.stringify(address), headers: {
-                                    //'Accept': 'application/json',
-                                    'Content-Type': 'application/json'
-                                }}).then(response => {console.log(response)});
-                        console.log(JSON.stringify(address));
-                    }}
+
+                        setData(address, '/api/Addresses/', "POST");
+                        setTimeout(() => window.location.href = '/addresses/?customerId=' + this.props.match.params.id, 100)
+                    }
+                    }
                 >
                     <Form>
                         <label htmlFor="addressLine">Address line</label>

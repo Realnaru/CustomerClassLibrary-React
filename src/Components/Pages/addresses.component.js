@@ -1,23 +1,23 @@
 import React from "react";
 import {Link, Redirect} from "react-router-dom";
+import AddressTableRow from "../Common/address.row";
+import getEntitiesData from "../Common/entities.getdata.component";
 const queryString = require('query-string');
+
 
 export class AddressesTable extends React.Component{
     constructor(props) {
         super(props);
 
         this.state = {
-            addresses: [],
+            entities: [],
             isLoaded: false
         };
     };
 
     componentDidMount() {
-        fetch('/api/Addresses/' + window.location.search).then(result => {
-            return result.json().then(data => {
-                this.setState({addresses: data, isLoaded: true})
-            })
-        })
+
+        getEntitiesData('/api/Addresses/' + window.location.search, this);
     }
 
     render(){
@@ -28,7 +28,7 @@ export class AddressesTable extends React.Component{
                 </div>
             );
         } else {
-            if (this.state.isLoaded && this.state.addresses.length === 0){
+            if (this.state.isLoaded && this.state.entities.length === 0){
                 return (
                     <div>
                         <h3>No addresses</h3>
@@ -37,7 +37,7 @@ export class AddressesTable extends React.Component{
             } else {
                 return(
                     <div className={'text-center'}>
-                        <Link to={"/addresses/" + this.state.addresses[0].customerId + "/add"}>Add new address</Link>
+                        <Link to={"/addresses/" + this.state.entities[0].customerId + "/add"}>Add new address</Link>
                         <table className={'text-center'}>
                             <tbody>
                             <tr>
@@ -50,12 +50,12 @@ export class AddressesTable extends React.Component{
                                 <th>Country</th>
                                 <th>Actions</th>
                             </tr>
-                            {this.state.addresses.map(address => {
-                                return <TableRow key={address.addressId} address={address}/>
+                            {this.state.entities.map(address => {
+                                return <AddressTableRow key={address.addressId} address={address}/>
                             })}
                             </tbody>
                         </table>
-                        <Link to={'/customers/'}>Back to customer list</Link>
+                        <Link to={'/customers/'}>Back to customers list</Link>
                     </div>
 
                 )
@@ -64,25 +64,4 @@ export class AddressesTable extends React.Component{
     }
 }
 
-class TableRow extends React.Component {
-    render() {
-        const address = this.props.address;
-        return (
-            <tr>
-                <td>{address.adressLine}</td>
-                <td>{address.adressLine2}</td>
-                <td>{address.addressType}</td>
-                <td>{address.city}</td>
-                <td>{address.postalCode}</td>
-                <td>{address.state}</td>
-                <td>{address.country}</td>
-                <td><Link to={'/addresses/' + address.addressId + '/edit'}>Edit</Link>&nbsp;
-                    <Link to={'/addresses/' + address.addressId}>Details</Link>&nbsp;
-                    <Link to={'delete'} onClick={() => {
-                        fetch('/api/Addresses/' + address.addressId,{method: 'DELETE'});
-                        window.location.href = '/addresses/?customerId=' + address.customerId;
-                    }}>Delete</Link></td>
-            </tr>
-        )
-    }
-}
+

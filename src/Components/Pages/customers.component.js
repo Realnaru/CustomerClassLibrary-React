@@ -1,5 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import CustomerTableRow from "../Common/customer.row";
+import getEntitiesData from "../Common/entities.getdata.component";
 import { withRouter } from "react-router";
 
 export class CustomersTable extends  React.Component{
@@ -7,17 +9,14 @@ export class CustomersTable extends  React.Component{
         super(props);
 
         this.state = {
-            customers: [],
+            entities: [],
             isLoaded: false
         };
     };
 
     componentDidMount() {
-        fetch('/api/Customers').then(result => {
-            return result.json().then(data => {
-                this.setState({customers: data, isLoaded: true})
-            })
-        })
+
+        getEntitiesData('/api/Customers', this)
     }
 
     render(){
@@ -28,7 +27,7 @@ export class CustomersTable extends  React.Component{
                 </div>
             );
         } else {
-            if (this.state.isLoaded && this.state.customers.length === 0){
+            if (this.state.isLoaded && this.state.entities.length === 0){
                 return (
                 <div>
                     <h3>No customers</h3>
@@ -50,8 +49,8 @@ export class CustomersTable extends  React.Component{
                             <th>Total purchase amount</th>
                             <th>Actions</th>
                         </tr>
-                    {this.state.customers.map(customer => {
-                        return <TableRow key={customer.customerId} customer={customer}/>
+                    {this.state.entities.map(customer => {
+                        return <CustomerTableRow key={customer.customerId} customer={customer}/>
                         })}
                         </tbody>
                     </table>
@@ -62,26 +61,5 @@ export class CustomersTable extends  React.Component{
     }
 }
 
-class TableRow extends React.Component {
 
-    render() {
-        const customer = this.props.customer;
-        return(
-            <tr><td>{customer.firstName}</td>
-                <td>{customer.lastName}</td>
-                <td>{customer.phoneNumber}</td>
-                <td><Link to={'/addresses/?customerId=' + customer.customerId}>Addresses</Link></td>
-                <td><Link to={'/notes/?customerId=' + customer.customerId}>Notes</Link></td>
-                <td>{customer.email}</td>
-                <td>{customer.totalPurshasesAmount}</td>
-                <td><Link to={'/customers/' + customer.customerId +'/edit'}>Edit</Link>&nbsp;
-                    <Link to={'/customers/' + customer.customerId + '/details'}>Details</Link>&nbsp;
-                    <Link to={'/customers/'} onClick={() => {
-                        fetch('/api/customers/' + customer.customerId,{method: 'DELETE'});
-                        window.location.reload();
-                    }}
-                    >Delete</Link></td></tr>
-        )
-    }
 
-}

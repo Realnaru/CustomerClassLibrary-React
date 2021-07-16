@@ -1,45 +1,41 @@
 import React from "react"
 import { Formik, Field, Form } from 'formik';
+import getData from "../Common/getdata.component";
+import setData from "../Common/setdata.component";
 
 export class NoteEditForm extends React.Component {
     constructor(props) {
         super(props);
 
         this.state ={
-            note: {}
+            entity: {}
         }
     }
 
     componentDidMount() {
-        fetch('/api/Notes/' + this.props.match.params.id).then(result => {
-            result.json().then(data => {
-                this.setState({note: data})
-            })
-        });
+        // fetch('/api/Notes/' + this.props.match.params.id).then(result => {
+        //     result.json().then(data => {
+        //         this.setState({note: data})
+        //     })
+        // });
+        getData('/api/Notes/' + this.props.match.params.id, this)
     }
 
     render(){
         return (
             <div className={'text-center'}>
                 <Formik
-                    initialValues={this.state.note}
+                    initialValues={this.state.entity}
                     enableReinitialize
-                    // onSubmit={async (values) => {
-                    //     await new Promise((r) => setTimeout(r, 500));
-                    //     alert(JSON.stringify(values, null, 2));
-                    // }}
                     onSubmit={(values) => {
                         const note = {
                             noteId: values.noteId,
                             customerId: values.customerId,
                             note: values.note
                         }
-                        fetch('/api/Notes/' + this.props.match.params.id,
-                            {method: "PUT", body: JSON.stringify(note), headers: {
-                                    //'Accept': 'application/json',
-                                    'Content-Type': 'application/json'
-                                }}).then(response => {console.log(response)});
-                        console.log(JSON.stringify(note));
+
+                        setData(values,'/api/Notes/' + this.props.match.params.id, "PUT");
+                        setTimeout(() => window.location.href = '/notes/?customerId=' + this.state.entity.customerId, 500)
                     }}
                 >
                     <Form>

@@ -1,5 +1,7 @@
 import React from "react";
 import {Link, Redirect} from "react-router-dom";
+import NoteTableRow from "../Common/notes.row";
+import getEntitiesData from "../Common/entities.getdata.component";
 const queryString = require('query-string');
 
 export class NotesTable extends React.Component {
@@ -7,17 +9,14 @@ export class NotesTable extends React.Component {
         super(props);
 
         this.state = {
-            notes: [],
+            entities: [],
             isLoaded: false
         };
     };
 
     componentDidMount() {
-        fetch('/api/Notes/' + window.location.search).then(result => {
-            return result.json().then(data => {
-                this.setState({notes: data, isLoaded: true})
-            })
-        })
+
+        getEntitiesData('/api/Notes/' + window.location.search, this)
     }
 
     render(){
@@ -28,7 +27,7 @@ export class NotesTable extends React.Component {
                 </div>
             );
         } else {
-            if (this.state.isLoaded && this.state.notes.length === 0){
+            if (this.state.isLoaded && this.state.entities.length === 0){
                 return (
                     <div>
                         <h3>No notes</h3>
@@ -37,15 +36,15 @@ export class NotesTable extends React.Component {
             } else {
                 return(
                     <div className={'text-center'}>
-                        <Link to={'/notes/'+ this.state.notes[0].customerId + '/add'}>Add new</Link>
+                        <Link to={'/notes/'+ this.state.entities[0].customerId + '/add'}>Add new</Link>
                         <table className={'text-center'}>
                             <tbody>
                             <tr>
                                 <th>Note</th>
                                 <th>Actions</th>
                             </tr>
-                            {this.state.notes.map(note => {
-                                return <TableRow key={note.noteId} note={note}/>
+                            {this.state.entities.map(note => {
+                                return <NoteTableRow key={note.noteId} note={note}/>
                             })}
                             </tbody>
                         </table>
@@ -58,20 +57,4 @@ export class NotesTable extends React.Component {
     }
 }
 
-class TableRow extends React.Component {
-    render() {
-        const note = this.props.note;
-        return (
-            <tr>
-                <td>{note.note}</td>
-                <td><Link to={'/notes/' + note.noteId + '/edit'}>Edit</Link>&nbsp;
-                    <Link to={'delete'} onClick={() => {
-                        fetch('/api/Notes/' + note.noteId,{method: 'DELETE'});
-                        //window.location.href = '/notes/?customerId=' + note.customerId;
 
-                    }}>Delete</Link></td>
-            </tr>
-        )
-    }
-
-}
