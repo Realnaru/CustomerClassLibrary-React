@@ -2,6 +2,8 @@ import React from "react";
 import { Formik, Field, Form } from 'formik';
 import {stringify} from "query-string";
 import setData from "../Common/setdata.component";
+import {AddressService} from "../Common/address.service";
+const service = new AddressService();
 
 export class AddressAddForm extends React.Component {
     constructor(props) {
@@ -27,6 +29,7 @@ export class AddressAddForm extends React.Component {
 
                     onSubmit={(values) => {
                         const address ={
+                            addressId: 0,
                             customerId: (Number)(this.props.match.params.id),
                             adressLine: values.addressLine,
                             adressLine2: values.addressLine2,
@@ -37,8 +40,9 @@ export class AddressAddForm extends React.Component {
                             country: values.country
                         }
 
-                        setData(address, '/api/Addresses/', "POST");
-                        setTimeout(() => window.location.href = '/addresses/?customerId=' + this.props.match.params.id, 100)
+                        service.createAddress(address);
+                        setTimeout(() => window.location.href = '/addresses/?customerId=' +
+                            this.props.match.params.id, 100)
                     }
                     }
                 >

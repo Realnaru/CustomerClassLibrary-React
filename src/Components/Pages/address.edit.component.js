@@ -1,8 +1,7 @@
 import React from "react";
 import { Formik, Field, Form } from 'formik';
-import getData from "../Common/getdata.component";
-import {stringify} from "query-string";
-import setData from "../Common/setdata.component";
+import {AddressService} from "../Common/address.service";
+const service = new AddressService();
 
 
 export class AddressEditForm extends React.Component {
@@ -16,7 +15,11 @@ export class AddressEditForm extends React.Component {
 
     componentDidMount() {
 
-        getData('/api/Addresses/' + this.props.match.params.id, this)
+        const addressId = this.props.match.params.id;
+        const result = service.getAddress(addressId);
+        if (result){
+            this.setState({entity: result});
+        }
     }
 
     render(){
@@ -27,8 +30,8 @@ export class AddressEditForm extends React.Component {
                     enableReinitialize
 
                     onSubmit={(values) => {
-
-                        setData(values, '/api/Addresses/' + this.props.match.params.id,"PUT")
+                        const addressId = this.props.match.params.id
+                        service.updateAddress(values, addressId);
                         setTimeout(() => window.location.href = '/addresses/?customerId=' + this.state.entity.customerId, 500)
                     }}
                 >

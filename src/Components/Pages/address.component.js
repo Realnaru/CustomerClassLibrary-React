@@ -1,5 +1,7 @@
 import React from "react";
 import getData from "../Common/getdata.component";
+import {AddressService} from "../Common/address.service";
+const service = new AddressService();
 
 export class AddressDetails extends React.Component{
     constructor(props) {
@@ -11,8 +13,12 @@ export class AddressDetails extends React.Component{
     }
 
     componentDidMount() {
+        const addressId = this.props.match.params.id;
+        const result = service.getAddress(addressId);
 
-        getData('/api/Addresses/' + this.props.match.params.id, this)
+        if (result){
+            this.setState({entity: result});
+        }
     }
 
     render(){

@@ -1,5 +1,7 @@
 import React from "react";
 import getData from "../Common/getdata.component";
+import {CustomerService} from "../Common/customer.service";
+const service = new CustomerService();
 
 export class CustomerDetails extends React.Component{
     constructor(props) {
@@ -11,8 +13,15 @@ export class CustomerDetails extends React.Component{
     }
 
     componentDidMount() {
-        getData('/api/Customers/' + this.props.match.params.id, this);
-    }
+
+        const customerId = this.props.match.params.id;
+        const result = service.getCustomer(customerId);
+        if (result){
+            this.setState({
+                entity: result
+            });
+        };
+    };
 
     render()
     {

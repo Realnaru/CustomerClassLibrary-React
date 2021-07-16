@@ -7,14 +7,14 @@ export class NoteService {
             }}).then(response => {console.log(response)});
     }
     getNotes(customerId) {
-        fetch('/api/Notes/' + customerId).then(result => {
+        fetch('/api/Notes/?customerId=' + customerId).then(result => {
             return result.json().then(data => {
                 return data
             });
         });
     }
-    getNote(customerId){
-        fetch('/api/Notes/' + customerId).then(result => {
+    getNote(noteId){
+        fetch('/api/Notes/' + noteId).then(result => {
             result.json().then(data => {
                 return data;
             })

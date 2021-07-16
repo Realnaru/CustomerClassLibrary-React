@@ -1,7 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {withRouter} from "react-router-dom";
-import deleteData from "./deletedata.component";
+import {AddressService} from "./address.service";
+const service = new AddressService();
 
 class AddressTableRow extends React.Component {
     render() {
@@ -18,8 +19,9 @@ class AddressTableRow extends React.Component {
                 <td><Link to={'/addresses/' + address.addressId + '/edit'}>Edit</Link>&nbsp;
                     <Link to={'/addresses/' + address.addressId}>Details</Link>&nbsp;
                     <Link to={'/delete'} onClick={() => {
-                        deleteData('/api/Addresses/' + address.addressId);
-                        setTimeout(() => window.location.href = '/addresses/?customerId=' + address.customerId, 500)
+                        service.deleteAddress(address.addressId);
+                        setTimeout(() => window.location.href = '/addresses/?customerId=' +
+                            address.customerId, 500)
                     }}>Delete</Link></td>
             </tr>
         )

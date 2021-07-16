@@ -2,7 +2,8 @@ import React from "react";
 import { Formik, Field, Form } from 'formik';
 import getData from "../Common/getdata.component";
 import setData from "../Common/setdata.component";
-import {stringify} from "query-string";
+import {CustomerService} from "../Common/customer.service";
+const service = new CustomerService();
 
 export class CustomerEditForm extends React.Component {
     constructor(props) {
@@ -14,9 +15,15 @@ export class CustomerEditForm extends React.Component {
     }
 
     componentDidMount() {
-        getData('/api/Customers/' + this.props.match.params.id, this);
-    }
 
+        const customerId = this.props.match.params.id;
+        const result = service.getCustomer(customerId);
+        if (result){
+            this.setState({
+                entity: result
+            });
+        };
+    };
 
     render(){
         return (
@@ -27,8 +34,8 @@ export class CustomerEditForm extends React.Component {
 
                 onSubmit={(values) => {
 
-                    //this.setData(values);
-                    setData(values,'/api/Customers/' + this.props.match.params.id,'PUT');
+                    const customerId = this.props.match.params.id;
+                    service.updateCustomer(values, customerId);
                     setTimeout(() => {window.location.href = '/customers'}, 500);
                 }}
             >

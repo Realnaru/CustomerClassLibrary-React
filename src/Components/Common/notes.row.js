@@ -12,7 +12,8 @@ class NoteTableRow extends React.Component {
                 <td><Link to={'/notes/' + note.noteId + '/edit'}>Edit</Link>&nbsp;
                     <Link to={'delete'} onClick={() => {
                         service.deleteNote(note.noteId)
-                        setTimeout(() => {window.location.href = '/notes/?customerId=' + note.customerId}, 500);
+                        setTimeout(() => {window.location.href = '/notes/?customerId=' +
+                            note.customerId}, 500);
                     }}>Delete</Link></td>
             </tr>
         )

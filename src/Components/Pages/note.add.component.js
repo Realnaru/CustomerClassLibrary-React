@@ -1,6 +1,7 @@
 import React from "react"
 import { Formik, Field, Form } from 'formik';
-import setData from "../Common/setdata.component";
+import {NoteService} from "../Common/note.service";
+const service = new NoteService();
 
 export class NoteAddForm extends React.Component {
     constructor(props) {
@@ -23,7 +24,7 @@ export class NoteAddForm extends React.Component {
                             note: values.note
                         }
 
-                        setData(note,'/api/Notes/', 'POST');
+                        service.createNote(note);
                         setTimeout(() => window.location.href='/notes/?customerId=' + this.props.match.params.id, 500)
                     }}
                 >

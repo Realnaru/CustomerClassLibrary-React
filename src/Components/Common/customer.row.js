@@ -2,6 +2,8 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {withRouter} from "react-router-dom";
 import deleteData from "./deletedata.component";
+import {CustomerService} from "./customer.service";
+const service = new CustomerService();
 
 class CustomerTableRow extends React.Component {
 
@@ -17,8 +19,9 @@ class CustomerTableRow extends React.Component {
                 <td>{customer.totalPurshasesAmount}</td>
                 <td><Link to={'/customers/' + customer.customerId +'/edit'}>Edit</Link>&nbsp;
                     <Link to={'/customers/' + customer.customerId + '/details'}>Details</Link>&nbsp;
-                    <Link to={'/customers/'} onClick={() => {
-                        deleteData('/api/customers/' + customer.customerId);
+                    <Link to={'/delete'} onClick={() => {
+                        //deleteData('/api/Customers/' + customer.customerId);
+                        service.deleteCustomer(customer.customerId)
                         setTimeout(window.location.reload(), 500);
                     }}
                     >Delete</Link></td></tr>

@@ -1,7 +1,8 @@
 import React from "react";
 import { Formik, Field, Form } from 'formik';
-import {stringify} from "query-string";
 import setData from "../Common/setdata.component";
+import {CustomerService} from "../Common/customer.service";
+const service = new CustomerService();
 
 export class CustomerAddForm extends React.Component {
     constructor(props) {
@@ -11,7 +12,6 @@ export class CustomerAddForm extends React.Component {
 
     render(){
         return (
-
             <div className={'text-center'}>
                 <h1>Add new customer</h1>
                 <Formik
@@ -34,6 +34,7 @@ export class CustomerAddForm extends React.Component {
                     onSubmit={(values) => {
 
                         let customer = {
+                            customerId: 0,
                             firstName: values.firstName,
                             lastName: values.lastName,
                             phoneNumber: values.phoneNumber,
@@ -41,6 +42,8 @@ export class CustomerAddForm extends React.Component {
                             totalPurshasesAmount: (Number)(values.totalPurchasesAmount),
                             adressesList: [
                                 {
+                                    addressId: 0,
+                                    customerId: 0,
                                     adressLine: values.adressLine,
                                     adressLine2: values.adressLine2,
                                     addressType: values.addressType,
@@ -52,13 +55,16 @@ export class CustomerAddForm extends React.Component {
                             ],
                             note: [
                                 {
+                                    noteId: 0,
+                                    customerId: 0,
                                     note: values.note
                                 }
                             ]
                         }
 
-                        setData(customer, '/api/Customers/', "POST");
-                        setTimeout(() => window.location.href = '/customers', 100)
+                        //setData(customer, '/api/Customers/', "POST");
+                        service.createCustomer(customer);
+                        setTimeout(() => window.location.href = '/customers', 500)
                     }}
                 >
                     <Form>
