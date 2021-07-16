@@ -15,11 +15,7 @@ export class AddressEditForm extends React.Component {
     }
 
     componentDidMount() {
-        // fetch('/api/Addresses/' + this.props.match.params.id).then(result => {
-        //     result.json().then(data => {
-        //         this.setState({address: data})
-        //     })
-        // });
+
         getData('/api/Addresses/' + this.props.match.params.id, this)
     }
 

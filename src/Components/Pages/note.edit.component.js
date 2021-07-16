@@ -2,6 +2,8 @@ import React from "react"
 import { Formik, Field, Form } from 'formik';
 import getData from "../Common/getdata.component";
 import setData from "../Common/setdata.component";
+import {NoteService} from "../Common/note.service";
+const service = new NoteService();
 
 export class NoteEditForm extends React.Component {
     constructor(props) {
@@ -13,12 +15,10 @@ export class NoteEditForm extends React.Component {
     }
 
     componentDidMount() {
-        // fetch('/api/Notes/' + this.props.match.params.id).then(result => {
-        //     result.json().then(data => {
-        //         this.setState({note: data})
-        //     })
-        // });
-        getData('/api/Notes/' + this.props.match.params.id, this)
+        const url = '/api/Notes/' + this.props.match.params.id
+        const result = service.getNote(url);
+
+        this.setState({entity: result});
     }
 
     render(){
@@ -28,14 +28,12 @@ export class NoteEditForm extends React.Component {
                     initialValues={this.state.entity}
                     enableReinitialize
                     onSubmit={(values) => {
-                        const note = {
-                            noteId: values.noteId,
-                            customerId: values.customerId,
-                            note: values.note
-                        }
 
-                        setData(values,'/api/Notes/' + this.props.match.params.id, "PUT");
-                        setTimeout(() => window.location.href = '/notes/?customerId=' + this.state.entity.customerId, 500)
+                        const noteId = this.props.match.params.id;
+                        service.updateNote(values, noteId);
+                        setTimeout(() =>
+                            window.location.href = '/notes/?customerId=' +
+                                this.state.entity.customerId, 500)
                     }}
                 >
                     <Form>
@@ -48,5 +46,4 @@ export class NoteEditForm extends React.Component {
             </div>
         )
     }
-
 }

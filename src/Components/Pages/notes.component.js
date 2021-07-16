@@ -2,7 +2,8 @@ import React from "react";
 import {Link, Redirect} from "react-router-dom";
 import NoteTableRow from "../Common/notes.row";
 import getEntitiesData from "../Common/entities.getdata.component";
-const queryString = require('query-string');
+import {NoteService} from "../Common/note.service";
+const service = new NoteService();
 
 export class NotesTable extends React.Component {
     constructor(props) {
@@ -16,7 +17,14 @@ export class NotesTable extends React.Component {
 
     componentDidMount() {
 
-        getEntitiesData('/api/Notes/' + window.location.search, this)
+        const customerId = window.location.search;
+        const result = service.getNotes(customerId);
+
+        if (result){
+            this.setState(
+                {entities: result,
+                        isLoaded: true});
+        }
     }
 
     render(){

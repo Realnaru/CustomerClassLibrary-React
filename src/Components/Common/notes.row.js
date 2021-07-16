@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import deleteData from "./deletedata.component";
+import {NoteService} from "./note.service";
+const service = new NoteService();
 
 class NoteTableRow extends React.Component {
     render() {
@@ -10,7 +11,7 @@ class NoteTableRow extends React.Component {
                 <td>{note.note}</td>
                 <td><Link to={'/notes/' + note.noteId + '/edit'}>Edit</Link>&nbsp;
                     <Link to={'delete'} onClick={() => {
-                        deleteData('/api/Notes/' + note.noteId);
+                        service.deleteNote(note.noteId)
                         setTimeout(() => {window.location.href = '/notes/?customerId=' + note.customerId}, 500);
                     }}>Delete</Link></td>
             </tr>
