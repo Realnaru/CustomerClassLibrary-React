@@ -19,7 +19,7 @@ class CustomerTableRow extends React.Component {
                 <td>{customer.totalPurshasesAmount}</td>
                 <td><Link to={'/customers/' + customer.customerId +'/edit'}>Edit</Link>&nbsp;
                     <Link to={'/customers/' + customer.customerId + '/details'}>Details</Link>&nbsp;
-                    <Link to={'/delete'} onClick={() => {
+                    <Link onClick={() => {
                         //deleteData('/api/Customers/' + customer.customerId);
                         service.deleteCustomer(customer.customerId)
                         setTimeout(window.location.reload(), 500);

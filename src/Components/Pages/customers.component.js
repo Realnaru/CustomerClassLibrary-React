@@ -16,7 +16,7 @@ export class CustomersTable extends  React.Component{
 
     componentDidMount() {
 
-        let result = service.getCustomers();
+        const result = service.getCustomers();
         if (result){
             this.setState({
                 entities: result,
