@@ -2,6 +2,7 @@ import React from "react";
 import {Link, Redirect} from "react-router-dom";
 import AddressTableRow from "../Common/address.row";
 import {AddressService} from "../Common/address.service";
+import getEntitiesData from "../Common/entities.getdata.component";
 const service = new AddressService();
 
 
@@ -16,16 +17,16 @@ export class AddressesTable extends React.Component{
     };
 
     componentDidMount() {
-
-        const addressId = window.location.search;
-        const result = service.getAddresses(addressId);
-        if (result){
-            this.setState({
-                entities: result,
-                isLoaded: true
-            });
-        };
-    };
+        getEntitiesData('/api/Addresses/' + window.location.search, this);
+        // const addressId = window.location.search;
+        // const result = service.getAddresses(addressId);
+        // if (result){
+        //     this.setState({
+        //         entities: result,
+        //         isLoaded: true
+        //     });
+        // };
+    }
 
     render(){
         if (!this.state.isLoaded){

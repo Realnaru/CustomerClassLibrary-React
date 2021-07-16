@@ -5,7 +5,7 @@ export class AddressService {
             }}).then(response => {console.log(response)});
     }
     getAddresses(customerId) {
-        fetch('/api/Addresses/?customerId=' + customerId).then(result => {
+        fetch('/api/Addresses/' + customerId).then(result => {
             return result.json().then(data => {
                 return data
             });

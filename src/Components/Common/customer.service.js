@@ -6,10 +6,8 @@ export class CustomerService{
             }}).then(response => {console.log(response)});
     }
     getCustomers() {
-        fetch('/api/Customers/').then(result => {
-            return result.json().then(data => {
-                return data
-            });
+        return fetch('api/Customers/').then(result => {
+            return result.json().then((data) => {return data})
         });
     }
     getCustomer(customerId){

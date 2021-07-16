@@ -7,7 +7,7 @@ export class NoteService {
             }}).then(response => {console.log(response)});
     }
     getNotes(customerId) {
-        fetch('/api/Notes/?customerId=' + customerId).then(result => {
+        fetch('/api/Notes/' + customerId).then(result => {
             return result.json().then(data => {
                 return data
             });

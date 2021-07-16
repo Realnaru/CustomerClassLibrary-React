@@ -2,7 +2,9 @@ import React from "react";
 import {Link} from "react-router-dom";
 import CustomerTableRow from "../Common/customer.row";
 import {CustomerService} from "../Common/customer.service";
+import getEntitiesData from "../Common/entities.getdata.component";
 const service = new CustomerService();
+
 
 export class CustomersTable extends  React.Component{
     constructor(props) {
@@ -15,15 +17,19 @@ export class CustomersTable extends  React.Component{
     };
 
     componentDidMount() {
-
-        const result = service.getCustomers();
-        if (result){
-            this.setState({
-                entities: result,
-                isLoaded: true
-            });
-        };
-    };
+        getEntitiesData('api/Customers/', this)
+        // let result1;
+        // service.getCustomers().then((data) => {
+        //     result1 = data
+        // });
+        //
+        // if (result1){
+        //     this.setState({
+        //         entities: result1,
+        //         isLoaded: true
+        //     });
+        // };
+    }
 
     render(){
         if (!this.state.isLoaded){
