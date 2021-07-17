@@ -16,18 +16,9 @@ export class NotesTable extends React.Component {
     };
 
     componentDidMount() {
-        getEntitiesData('/api/Notes/' + window.location.search, this)
+        const customerId = window.location.search;
+        service.getNotes(customerId, this);
     }
-
-    //     const customerId = window.location.search;
-    //     const result = service.getNotes(customerId);
-    //
-    //     if (result){
-    //         this.setState(
-    //             {entities: result,
-    //                     isLoaded: true});
-    //     }
-    // }
 
     render(){
         if (!this.state.isLoaded){

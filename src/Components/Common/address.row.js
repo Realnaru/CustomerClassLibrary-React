@@ -18,11 +18,11 @@ class AddressTableRow extends React.Component {
                 <td>{address.country}</td>
                 <td><Link to={'/addresses/' + address.addressId + '/edit'}>Edit</Link>&nbsp;
                     <Link to={'/addresses/' + address.addressId}>Details</Link>&nbsp;
-                    <Link to={'/delete'} onClick={() => {
+                    <a href={'#'} onClick={() => {
                         service.deleteAddress(address.addressId);
                         setTimeout(() => window.location.href = '/addresses/?customerId=' +
                             address.customerId, 500)
-                    }}>Delete</Link></td>
+                    }}>Delete</a></td>
             </tr>
         )
     }

@@ -5,15 +5,19 @@ export class CustomerService{
                 'Content-Type': 'application/json'
             }}).then(response => {console.log(response)});
     }
-    getCustomers() {
-        return fetch('api/Customers/').then(result => {
-            return result.json().then((data) => {return data})
+    getCustomers(component) {
+        fetch('api/Customers/').then(result => {
+            return result.json().then(data => {
+               component.setState({entities: data,
+               isLoaded: true});
+            });
         });
-    }
-    getCustomer(customerId){
+    };
+
+    getCustomer(customerId, component) {
         fetch('/api/Customers/' + customerId).then(result => {
             result.json().then(data => {
-                return data;
+                component.setState({entity: data})
             })
         });
     }
@@ -25,6 +29,8 @@ export class CustomerService{
     }
 
     deleteCustomer(customerId){
-        fetch('/api/Customers/' + customerId,{method: 'DELETE'});
+        fetch('/api/Customers/' + customerId,{method: 'DELETE'}).then((response) => {
+            return response
+        });
     }
 }

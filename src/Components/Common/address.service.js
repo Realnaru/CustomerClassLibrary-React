@@ -4,17 +4,22 @@ export class AddressService {
                 'Content-Type': 'application/json'
             }}).then(response => {console.log(response)});
     }
-    getAddresses(customerId) {
+    getAddresses(customerId, component) {
         fetch('/api/Addresses/' + customerId).then(result => {
             return result.json().then(data => {
-                return data
+                component.setState({
+                    entities: data,
+                    isLoaded: true});
             });
         });
     }
-    getAddress(addressId){
+
+    getAddress(addressId, component){
         fetch('/api/Addresses/' + addressId).then(result => {
             result.json().then(data => {
-                return data;
+                component.setState({
+                    entity: data
+                })
             })
         });
     }

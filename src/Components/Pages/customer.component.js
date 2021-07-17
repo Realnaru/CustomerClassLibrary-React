@@ -13,14 +13,8 @@ export class CustomerDetails extends React.Component{
     }
 
     componentDidMount() {
-
-        const customerId = this.props.match.params.id;
-        const result = service.getCustomer(customerId);
-        if (result){
-            this.setState({
-                entity: result
-            });
-        };
+         const customerId = this.props.match.params.id;
+         service.getCustomer(customerId, this);
     };
 
     render()

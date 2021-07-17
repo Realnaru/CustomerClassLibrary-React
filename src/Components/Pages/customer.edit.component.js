@@ -1,7 +1,5 @@
 import React from "react";
 import { Formik, Field, Form } from 'formik';
-import getData from "../Common/getdata.component";
-import setData from "../Common/setdata.component";
 import {CustomerService} from "../Common/customer.service";
 const service = new CustomerService();
 
@@ -15,14 +13,8 @@ export class CustomerEditForm extends React.Component {
     }
 
     componentDidMount() {
-
         const customerId = this.props.match.params.id;
-        const result = service.getCustomer(customerId);
-        if (result){
-            this.setState({
-                entity: result
-            });
-        };
+        service.getCustomer(customerId, this);
     };
 
     render(){
@@ -65,5 +57,4 @@ export class CustomerEditForm extends React.Component {
         </div>
         )
     }
-
 }

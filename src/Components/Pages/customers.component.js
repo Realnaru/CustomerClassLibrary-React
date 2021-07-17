@@ -17,18 +17,7 @@ export class CustomersTable extends  React.Component{
     };
 
     componentDidMount() {
-        getEntitiesData('api/Customers/', this)
-        // let result1;
-        // service.getCustomers().then((data) => {
-        //     result1 = data
-        // });
-        //
-        // if (result1){
-        //     this.setState({
-        //         entities: result1,
-        //         isLoaded: true
-        //     });
-        // };
+        service.getCustomers(this);
     }
 
     render(){

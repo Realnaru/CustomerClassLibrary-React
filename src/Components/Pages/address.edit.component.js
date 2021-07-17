@@ -14,12 +14,8 @@ export class AddressEditForm extends React.Component {
     }
 
     componentDidMount() {
-
         const addressId = this.props.match.params.id;
-        const result = service.getAddress(addressId);
-        if (result){
-            this.setState({entity: result});
-        }
+        service.getAddress(addressId, this);
     }
 
     render(){

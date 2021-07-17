@@ -6,18 +6,23 @@ export class NoteService {
                 'Content-Type': 'application/json'
             }}).then(response => {console.log(response)});
     }
-    getNotes(customerId) {
+    getNotes(customerId, component) {
         fetch('/api/Notes/' + customerId).then(result => {
-            return result.json().then(data => {
-                return data
+            return result.json().then((data) => {
+                component.setState({
+                    entities: data,
+                    isLoaded: true
+                })
             });
         });
     }
-    getNote(noteId){
+    getNote(noteId, component){
         fetch('/api/Notes/' + noteId).then(result => {
             result.json().then(data => {
-                return data;
-            })
+                component.setState({
+                    entity: data
+                });
+            });
         });
     }
     updateNote(values, noteId){

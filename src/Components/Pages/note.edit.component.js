@@ -1,7 +1,5 @@
 import React from "react"
 import { Formik, Field, Form } from 'formik';
-import getData from "../Common/getdata.component";
-import setData from "../Common/setdata.component";
 import {NoteService} from "../Common/note.service";
 const service = new NoteService();
 
@@ -15,10 +13,8 @@ export class NoteEditForm extends React.Component {
     }
 
     componentDidMount() {
-        const url = '/api/Notes/' + this.props.match.params.id
-        const result = service.getNote(url);
-
-        this.setState({entity: result});
+        const noteId = this.props.match.params.id
+        service.getNote(noteId, this);
     }
 
     render(){
