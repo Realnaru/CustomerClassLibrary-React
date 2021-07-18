@@ -1,8 +1,9 @@
 import React from "react";
-import getData from "../Common/getdata.component";
-import {AddressService} from "../Common/address.service";
+//import getData from "../Common/getdata.component";
+//import {AddressService} from "../Common/address.service";
 import {Link} from "react-router-dom";
-const service = new AddressService();
+//const service = new AddressService();
+const service = require('../Common/address.service');
 
 export class AddressDetails extends React.Component{
     constructor(props) {
@@ -15,7 +16,11 @@ export class AddressDetails extends React.Component{
 
     componentDidMount() {
         const addressId = this.props.match.params.id;
-        service.getAddress(addressId, this);
+        service.getAddress(addressId).then(data => {
+            this.setState({
+                entity: data
+            })
+        })
     }
 
     render(){

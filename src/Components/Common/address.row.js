@@ -1,8 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {withRouter} from "react-router-dom";
-import {AddressService} from "./address.service";
-const service = new AddressService();
+//import {AddressService} from "./address.service";
+//const service = new AddressService();
+const service = require('../Common/address.service');
 
 class AddressTableRow extends React.Component {
     render() {

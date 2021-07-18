@@ -1,8 +1,9 @@
 import React from "react";
 import { Formik, Field, Form } from 'formik';
-import {AddressService} from "../Common/address.service";
+//import {AddressService} from "../Common/address.service";
 import {Link} from "react-router-dom";
-const service = new AddressService();
+// service = new AddressService();
+const service = require('../Common/address.service');
 
 
 export class AddressEditForm extends React.Component {
@@ -16,7 +17,11 @@ export class AddressEditForm extends React.Component {
 
     componentDidMount() {
         const addressId = this.props.match.params.id;
-        service.getAddress(addressId, this);
+        service.getAddress(addressId).then(data => {
+            this.setState({
+                entity: data
+            })
+        })
     }
 
     render(){

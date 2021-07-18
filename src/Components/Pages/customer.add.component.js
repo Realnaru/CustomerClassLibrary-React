@@ -1,9 +1,10 @@
 import React from "react";
 import { Formik, Field, Form } from 'formik';
-import setData from "../Common/setdata.component";
-import {CustomerService} from "../Common/customer.service";
+//import setData from "../Common/setdata.component";
+//import {CustomerService} from "../Common/customer.service";
 import {Link} from "react-router-dom";
-const service = new CustomerService();
+//const service = new CustomerService();
+const service = require('../Common/customer.service');
 
 export class CustomerAddForm extends React.Component {
     constructor(props) {

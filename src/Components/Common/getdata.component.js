@@ -1,9 +1,7 @@
 
-function getData(url, component){
-    fetch(url).then(result => {
-        result.json().then(data => {
-            component.setState({entity: data})
+function getData(url){
+    return fetch(url).then(result => {
+        return result.json()
         })
-    });
 }
 export default getData;

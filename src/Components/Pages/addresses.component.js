@@ -1,8 +1,9 @@
 import React from "react";
 import {Link, Redirect} from "react-router-dom";
 import AddressTableRow from "../Common/address.row";
-import {AddressService} from "../Common/address.service";
-const service = new AddressService();
+//import {AddressService} from "../Common/address.service";
+const service = require('../Common/address.service');
+
 
 
 export class AddressesTable extends React.Component{
@@ -17,7 +18,12 @@ export class AddressesTable extends React.Component{
 
     componentDidMount() {
         const customerId = window.location.search;
-        service.getAddresses(customerId, this);
+        service.getAddresses(customerId).then(data => {
+            this.setState({
+                entities: data,
+                isLoaded: true
+            })
+        });
     }
 
     render(){

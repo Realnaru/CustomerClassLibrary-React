@@ -1,8 +1,9 @@
 import React from "react"
 import { Formik, Field, Form } from 'formik';
-import {NoteService} from "../Common/note.service";
+//import {NoteService} from "../Common/note.service";
 import {Link} from "react-router-dom";
-const service = new NoteService();
+//const service = new NoteService();
+const service = require('../Common/note.service');
 
 export class NoteEditForm extends React.Component {
     constructor(props) {
@@ -15,7 +16,11 @@ export class NoteEditForm extends React.Component {
 
     componentDidMount() {
         const noteId = this.props.match.params.id
-        service.getNote(noteId, this);
+        service.getNote(noteId).then(data => {
+            this.setState({
+                entity: data
+            })
+        });
     }
 
     render(){

@@ -3,15 +3,15 @@ import getData from "./getdata.component";
 import setData from "./setdata.component";
 import deleteData from "./deletedata.component";
 
-export class NoteService {
+//export class NoteService {
 
-    createNote(values){
+    export function createNote(values){
         // fetch('/api/Notes/', {method: 'POST', body: JSON.stringify(values), headers: {
         //         'Content-Type': 'application/json'
         //     }}).then(response => {console.log(response)});
         setData(values, '/api/Notes/', 'POST');
     }
-    getNotes(customerId, component) {
+    export function getNotes(customerId, component) {
         // fetch('/api/Notes/' + customerId).then(result => {
         //     return result.json().then((data) => {
         //         component.setState({
@@ -20,9 +20,9 @@ export class NoteService {
         //         })
         //     });
         // });
-        getEntitiesData('/api/Notes/' + customerId, component);
+        return getEntitiesData('/api/Notes/' + customerId, component);
     }
-    getNote(noteId, component){
+    export function getNote(noteId, component){
         // fetch('/api/Notes/' + noteId).then(result => {
         //     result.json().then(data => {
         //         component.setState({
@@ -30,9 +30,9 @@ export class NoteService {
         //         });
         //     });
         // });
-        getData('/api/Notes/' + noteId, component);
+        return getData('/api/Notes/' + noteId);
     }
-    updateNote(values, noteId){
+    export function updateNote(values, noteId){
         // fetch('/api/Notes/' + noteId, {method: 'PUT', body: JSON.stringify(values), headers: {
         //         'Content-Type': 'application/json'
         //     }}).then(response => {console.log(response)});
@@ -40,8 +40,8 @@ export class NoteService {
         setData(values, '/api/Notes/' + noteId, 'PUT');
     }
 
-    deleteNote(noteId){
+    export function deleteNote(noteId){
         //fetch('/api/Notes/' + noteId,{method: 'DELETE'});
         deleteData('/api/Notes/' + noteId);
     }
-}
+//}

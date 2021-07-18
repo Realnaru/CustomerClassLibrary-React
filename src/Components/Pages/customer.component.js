@@ -1,8 +1,9 @@
 import React from "react";
-import getData from "../Common/getdata.component";
-import {CustomerService} from "../Common/customer.service";
+//import getData from "../Common/getdata.component";
+//import {CustomerService} from "../Common/customer.service";
 import {Link} from "react-router-dom";
-const service = new CustomerService();
+//const service = new CustomerService();
+const service = require('../Common/customer.service');
 
 export class CustomerDetails extends React.Component{
     constructor(props) {
@@ -15,7 +16,11 @@ export class CustomerDetails extends React.Component{
 
     componentDidMount() {
          const customerId = this.props.match.params.id;
-         service.getCustomer(customerId, this);
+         service.getCustomer(customerId).then(data => {
+             this.setState({
+                 entity: data
+             })
+         });
     };
 
     render()

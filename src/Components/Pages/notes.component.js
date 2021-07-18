@@ -1,8 +1,9 @@
 import React from "react";
 import {Link, Redirect} from "react-router-dom";
 import NoteTableRow from "../Common/notes.row";
-import {NoteService} from "../Common/note.service";
-const service = new NoteService();
+//import {NoteService} from "../Common/note.service";
+//const service = new NoteService();
+const service = require('../Common/note.service');
 
 export class NotesTable extends React.Component {
     constructor(props) {
@@ -16,7 +17,12 @@ export class NotesTable extends React.Component {
 
     componentDidMount() {
         const customerId = window.location.search;
-        service.getNotes(customerId, this);
+        service.getNotes(customerId).then(data => {
+            this.setState({
+                entities: data,
+                isLoaded: true
+            })
+        });
     }
 
     render(){

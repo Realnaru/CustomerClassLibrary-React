@@ -1,8 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {withRouter} from "react-router-dom";
-import {CustomerService} from "./customer.service";
-const service = new CustomerService();
+//import {CustomerService} from "./customer.service";
+//const service = new CustomerService();
+const service = require('../Common/customer.service');
 
 class CustomerTableRow extends React.Component {
 
@@ -25,4 +26,4 @@ class CustomerTableRow extends React.Component {
         )
     }
 }
-export default withRouter(CustomerTableRow);
+export default CustomerTableRow;

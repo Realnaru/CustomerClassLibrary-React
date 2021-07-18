@@ -1,10 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import CustomerTableRow from "../Common/customer.row";
-import {CustomerService} from "../Common/customer.service";
-import getEntitiesData from "../Common/entities.getdata.component";
-const service = new CustomerService();
-
+const service = require('../Common/customer.service');
 
 export class CustomersTable extends  React.Component{
     constructor(props) {
@@ -17,7 +14,12 @@ export class CustomersTable extends  React.Component{
     };
 
     componentDidMount() {
-        service.getCustomers(this);
+        service.getCustomers().then(data => {
+            this.setState({
+                entities: data,
+                isLoaded: true
+            })
+        });
     }
 
     render(){

@@ -3,14 +3,14 @@ import getData from "./getdata.component";
 import setData from "./setdata.component";
 import deleteData from "./deletedata.component";
 
-export class AddressService {
-    createAddress(values){
+//export class AddressService {
+    export function createAddress(values){
         // fetch('/api/Addresses/', {method: 'POST', body: JSON.stringify(values), headers: {
         //         'Content-Type': 'application/json'
         //     }}).then(response => {console.log(response)});
         setData(values, '/api/Addresses/', 'POST');
     }
-    getAddresses(customerId, component) {
+    export function getAddresses(customerId, component) {
         // fetch('/api/Addresses/' + customerId).then(result => {
         //     return result.json().then(data => {
         //         component.setState({
@@ -18,10 +18,10 @@ export class AddressService {
         //             isLoaded: true});
         //     });
         // });
-        getEntitiesData('/api/Addresses/' + customerId, component);
+        return getEntitiesData('/api/Addresses/' + customerId);
     }
 
-    getAddress(addressId, component){
+    export function getAddress(addressId, component){
         // fetch('/api/Addresses/' + addressId).then(result => {
         //     result.json().then(data => {
         //         component.setState({
@@ -29,9 +29,9 @@ export class AddressService {
         //         })
         //     })
         // });
-        getData('/api/Addresses/' + addressId, component);
+        return getData('/api/Addresses/' + addressId);
     }
-    updateAddress(values, addressId){
+    export function updateAddress(values, addressId){
         // fetch('/api/Addresses/' + addressId, {method: 'PUT', body: JSON.stringify(values), headers: {
         //         'Content-Type': 'application/json'
         //     }}).then(response => {console.log(response)});
@@ -39,8 +39,8 @@ export class AddressService {
         setData(values, '/api/Addresses/' + addressId, 'PUT');
     }
 
-    deleteAddress(addressId){
+    export function deleteAddress(addressId){
         //fetch('/api/Addresses/' + addressId,{method: 'DELETE'});
         deleteData('/api/Addresses/' + addressId);
     }
-}
+//}

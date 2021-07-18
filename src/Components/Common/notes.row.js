@@ -1,7 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {NoteService} from "./note.service";
-const service = new NoteService();
+//import {NoteService} from "./note.service";
+//const service = new NoteService();
+const service = require('../Common/note.service');
 
 class NoteTableRow extends React.Component {
     render() {

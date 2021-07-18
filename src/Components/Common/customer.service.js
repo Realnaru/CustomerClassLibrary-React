@@ -3,34 +3,34 @@ import getData from "./getdata.component";
 import setData from "./setdata.component";
 import deleteData from "./deletedata.component";
 
-export class CustomerService{
+// export class CustomerService{
 
-    createCustomer(values){
+    export function createCustomer(values){
         // fetch('/api/Customers/', {method: 'POST', body: JSON.stringify(values), headers: {
         //         'Content-Type': 'application/json'
         //     }}).then(response => {console.log(response)});
         setData(values, '/api/Customers/', "POST");
 
     }
-    getCustomers(component) {
+    export function getCustomers() {
         // fetch('api/Customers/').then(result => {
         //     return result.json().then(data => {
         //        component.setState({entities: data,
         //        isLoaded: true});
         //     });
         // });
-        getEntitiesData('api/Customers/', component);
+        return getEntitiesData('api/Customers/');
     };
 
-    getCustomer(customerId, component) {
+    export function getCustomer(customerId, component) {
         // fetch('/api/Customers/' + customerId).then(result => {
         //     result.json().then(data => {
         //         component.setState({entity: data})
         //     })
         // });
-        getData('/api/Customers/' + customerId, component)
+        return getData('/api/Customers/' + customerId, component)
     }
-    updateCustomer(values, customerId){
+    export function updateCustomer(values, customerId){
         // fetch('/api/Customers/' + customerId, {method: 'PUT', body: JSON.stringify(values), headers: {
         //         'Content-Type': 'application/json'
         //     }}).then(response => {console.log(response)});
@@ -38,10 +38,10 @@ export class CustomerService{
         setData(values, '/api/Customers/' + customerId, "PUT")
     }
 
-    deleteCustomer(customerId){
+    export function deleteCustomer(customerId){
         // fetch('/api/Customers/' + customerId,{method: 'DELETE'}).then((response) => {
         //     return response
         // });
         deleteData('/api/Customers/' + customerId)
     }
-}
+// }
