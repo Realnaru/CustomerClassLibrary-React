@@ -3,7 +3,7 @@ import { Formik, Field, Form } from 'formik';
 //import {CustomerService} from "../Common/customer.service";
 import {Link} from "react-router-dom";
 //const service = new CustomerService();
-const service = require('../Common/customer.service');
+const service = require('../Common/services/customer.service');
 
 export class CustomerEditForm extends React.Component {
     constructor(props) {

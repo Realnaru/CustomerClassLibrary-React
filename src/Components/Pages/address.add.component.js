@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Field, Form } from 'formik';
 //import {AddressService} from "../Common/address.service";
 //const service = new AddressService();
-const service = require('../Common/address.service');
+const service = require('../Common/services/address.service');
 
 export class AddressAddForm extends React.Component {
     constructor(props) {

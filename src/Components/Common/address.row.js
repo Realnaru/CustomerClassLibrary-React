@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {withRouter} from "react-router-dom";
 //import {AddressService} from "./address.service";
 //const service = new AddressService();
-const service = require('../Common/address.service');
+const service = require('./services/address.service');
 
 class AddressTableRow extends React.Component {
     render() {

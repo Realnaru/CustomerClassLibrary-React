@@ -3,7 +3,7 @@ import {Link, Redirect} from "react-router-dom";
 import NoteTableRow from "../Common/notes.row";
 //import {NoteService} from "../Common/note.service";
 //const service = new NoteService();
-const service = require('../Common/note.service');
+const service = require('../Common/services/note.service');
 
 export class NotesTable extends React.Component {
     constructor(props) {

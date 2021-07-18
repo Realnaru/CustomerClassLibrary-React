@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import CustomerTableRow from "../Common/customer.row";
-const service = require('../Common/customer.service');
+const service = require('../Common/services/customer.service');
 
 export class CustomersTable extends  React.Component{
     constructor(props) {

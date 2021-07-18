@@ -3,7 +3,7 @@ import React from "react";
 //import {AddressService} from "../Common/address.service";
 import {Link} from "react-router-dom";
 //const service = new AddressService();
-const service = require('../Common/address.service');
+const service = require('../Common/services/address.service');
 
 export class AddressDetails extends React.Component{
     constructor(props) {

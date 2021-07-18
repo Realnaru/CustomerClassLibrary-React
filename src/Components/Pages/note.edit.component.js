@@ -3,7 +3,7 @@ import { Formik, Field, Form } from 'formik';
 //import {NoteService} from "../Common/note.service";
 import {Link} from "react-router-dom";
 //const service = new NoteService();
-const service = require('../Common/note.service');
+const service = require('../Common/services/note.service');
 
 export class NoteEditForm extends React.Component {
     constructor(props) {

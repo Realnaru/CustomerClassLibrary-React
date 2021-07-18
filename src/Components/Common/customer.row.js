@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {withRouter} from "react-router-dom";
 //import {CustomerService} from "./customer.service";
 //const service = new CustomerService();
-const service = require('../Common/customer.service');
+const service = require('./services/customer.service');
 
 class CustomerTableRow extends React.Component {
 
