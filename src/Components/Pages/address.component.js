@@ -1,6 +1,7 @@
 import React from "react";
 import getData from "../Common/getdata.component";
 import {AddressService} from "../Common/address.service";
+import {Link} from "react-router-dom";
 const service = new AddressService();
 
 export class AddressDetails extends React.Component{
@@ -19,6 +20,7 @@ export class AddressDetails extends React.Component{
 
     render(){
         return(
+            <>
             <div className={'text-center'}>
                 <label>Address line</label><br/>
                 <label>{this.state.entity.adressLine}</label><br/>
@@ -35,6 +37,8 @@ export class AddressDetails extends React.Component{
                 <label>Country</label><br/>
                 <label>{this.state.entity.country}</label><br/>
             </div>
+                <Link to={'/customers'}>Back to customers list</Link>
+            </>
         );
     }
 }

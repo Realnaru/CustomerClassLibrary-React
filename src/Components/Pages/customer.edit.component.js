@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Field, Form } from 'formik';
 import {CustomerService} from "../Common/customer.service";
+import {Link} from "react-router-dom";
 const service = new CustomerService();
 
 export class CustomerEditForm extends React.Component {
@@ -54,6 +55,7 @@ export class CustomerEditForm extends React.Component {
                     <button type="submit">Submit</button>
                 </Form>
             </Formik>
+            <Link to={'/customers'}>Back to customers list</Link>
         </div>
         )
     }

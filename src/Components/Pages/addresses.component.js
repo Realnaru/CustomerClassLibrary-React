@@ -55,7 +55,7 @@ export class AddressesTable extends React.Component{
                             })}
                             </tbody>
                         </table>
-                        <Link to={'/customers/'}>Back to customers list</Link>
+                        <Link to={'/customers'}>Back to customers list</Link>
                     </div>
 
                 )

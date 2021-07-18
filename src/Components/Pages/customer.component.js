@@ -1,6 +1,7 @@
 import React from "react";
 import getData from "../Common/getdata.component";
 import {CustomerService} from "../Common/customer.service";
+import {Link} from "react-router-dom";
 const service = new CustomerService();
 
 export class CustomerDetails extends React.Component{
@@ -20,6 +21,7 @@ export class CustomerDetails extends React.Component{
     render()
     {
         return(
+            <>
             <div className={'text-center'}>
                 <label>First name</label><br/>
                 <label>{this.state.entity.firstName}</label><br/>
@@ -32,6 +34,8 @@ export class CustomerDetails extends React.Component{
                 <label>Total purchases amount</label><br/>
                 <label>{this.state.entity.totalPurshasesAmount}</label><br/>
             </div>
+                <Link to={'/customers'}>Back to customers list</Link>
+                </>
         )
     }
 }

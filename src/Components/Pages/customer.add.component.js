@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Field, Form } from 'formik';
 import setData from "../Common/setdata.component";
 import {CustomerService} from "../Common/customer.service";
+import {Link} from "react-router-dom";
 const service = new CustomerService();
 
 export class CustomerAddForm extends React.Component {
@@ -62,7 +63,6 @@ export class CustomerAddForm extends React.Component {
                             ]
                         }
 
-                        //setData(customer, '/api/Customers/', "POST");
                         service.createCustomer(customer);
                         setTimeout(() => window.location.href = '/customers', 500)
                     }}
@@ -113,6 +113,7 @@ export class CustomerAddForm extends React.Component {
                         <button type="submit">Submit</button>
                     </Form>
                 </Formik>
+                <Link to={'/customers'}>Back to customers list</Link>
             </div>
         )
     }

@@ -1,7 +1,6 @@
 import React from "react";
 import {Link, Redirect} from "react-router-dom";
 import NoteTableRow from "../Common/notes.row";
-import getEntitiesData from "../Common/entities.getdata.component";
 import {NoteService} from "../Common/note.service";
 const service = new NoteService();
 
@@ -49,7 +48,7 @@ export class NotesTable extends React.Component {
                             })}
                             </tbody>
                         </table>
-                        <Link to={'/customers/'}>Back to customer list</Link>
+                        <Link to={'/customers'}>Back to customer list</Link>
                     </div>
 
                 )

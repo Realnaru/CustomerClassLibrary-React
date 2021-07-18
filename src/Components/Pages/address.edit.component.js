@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Field, Form } from 'formik';
 import {AddressService} from "../Common/address.service";
+import {Link} from "react-router-dom";
 const service = new AddressService();
 
 
@@ -55,7 +56,9 @@ export class AddressEditForm extends React.Component {
 
                         <button type="submit">Submit</button>
                     </Form>
+
                 </Formik>
+                <Link to={'/customers'}>Back to customers list</Link>
             </div>
         )
     }
