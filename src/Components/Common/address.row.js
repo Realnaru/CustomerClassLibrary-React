@@ -28,4 +28,4 @@ class AddressTableRow extends React.Component {
         )
     }
 }
-export default withRouter(AddressTableRow);
+export default AddressTableRow;

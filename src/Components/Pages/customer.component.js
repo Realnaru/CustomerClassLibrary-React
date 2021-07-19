@@ -1,8 +1,6 @@
 import React from "react";
-//import getData from "../Common/getdata.component";
-//import {CustomerService} from "../Common/customer.service";
 import {Link} from "react-router-dom";
-//const service = new CustomerService();
+
 const service = require('../Common/services/customer.service');
 
 export class CustomerDetails extends React.Component{

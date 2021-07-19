@@ -8,9 +8,9 @@ import deleteData from "./deletedata.component";
         // fetch('/api/Addresses/', {method: 'POST', body: JSON.stringify(values), headers: {
         //         'Content-Type': 'application/json'
         //     }}).then(response => {console.log(response)});
-        setData(values, '/api/Addresses/', 'POST');
+        return setData(values, '/api/Addresses/', 'POST');
     }
-    export function getAddresses(customerId, component) {
+    export function getAddresses(customerId) {
         // fetch('/api/Addresses/' + customerId).then(result => {
         //     return result.json().then(data => {
         //         component.setState({
@@ -21,7 +21,7 @@ import deleteData from "./deletedata.component";
         return getEntitiesData('/api/Addresses/' + customerId);
     }
 
-    export function getAddress(addressId, component){
+    export function getAddress(addressId){
         // fetch('/api/Addresses/' + addressId).then(result => {
         //     result.json().then(data => {
         //         component.setState({
@@ -36,11 +36,11 @@ import deleteData from "./deletedata.component";
         //         'Content-Type': 'application/json'
         //     }}).then(response => {console.log(response)});
         // console.log(JSON.stringify(values));
-        setData(values, '/api/Addresses/' + addressId, 'PUT');
+        return setData(values, '/api/Addresses/' + addressId, 'PUT');
     }
 
     export function deleteAddress(addressId){
         //fetch('/api/Addresses/' + addressId,{method: 'DELETE'});
-        deleteData('/api/Addresses/' + addressId);
+        return deleteData('/api/Addresses/' + addressId);
     }
 //}

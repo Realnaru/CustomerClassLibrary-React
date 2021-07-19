@@ -9,9 +9,9 @@ import deleteData from "./deletedata.component";
         // fetch('/api/Notes/', {method: 'POST', body: JSON.stringify(values), headers: {
         //         'Content-Type': 'application/json'
         //     }}).then(response => {console.log(response)});
-        setData(values, '/api/Notes/', 'POST');
+        return setData(values, '/api/Notes/', 'POST');
     }
-    export function getNotes(customerId, component) {
+    export function getNotes(customerId) {
         // fetch('/api/Notes/' + customerId).then(result => {
         //     return result.json().then((data) => {
         //         component.setState({
@@ -20,9 +20,9 @@ import deleteData from "./deletedata.component";
         //         })
         //     });
         // });
-        return getEntitiesData('/api/Notes/' + customerId, component);
+        return getEntitiesData('/api/Notes/' + customerId);
     }
-    export function getNote(noteId, component){
+    export function getNote(noteId){
         // fetch('/api/Notes/' + noteId).then(result => {
         //     result.json().then(data => {
         //         component.setState({
@@ -37,11 +37,11 @@ import deleteData from "./deletedata.component";
         //         'Content-Type': 'application/json'
         //     }}).then(response => {console.log(response)});
         // console.log(JSON.stringify(values));
-        setData(values, '/api/Notes/' + noteId, 'PUT');
+        return setData(values, '/api/Notes/' + noteId, 'PUT');
     }
 
     export function deleteNote(noteId){
         //fetch('/api/Notes/' + noteId,{method: 'DELETE'});
-        deleteData('/api/Notes/' + noteId);
+        return deleteData('/api/Notes/' + noteId);
     }
 //}
