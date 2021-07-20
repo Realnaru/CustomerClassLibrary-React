@@ -33,18 +33,20 @@ export class CustomerEditForm extends React.Component {
                 onSubmit={(values) => {
 
                     const customerId = this.props.match.params.id;
-                    service.updateCustomer(values, customerId);
-                    setTimeout(() => {window.location.href = '/customers'}, 500);
+                    service.updateCustomer(values, customerId).then(() => {
+                        this.props.history.push('/customers');
+                    });
+                    //setTimeout(() => {window.location.href = '/customers'}, 500);
                 }}
             >
                 <Form>
-                    <label htmlFor="firstName">First Name</label>
+                    <label htmlFor="firstName">First name</label>
                     <Field id="firstName" name="firstName" placeholder="Jane" /><br/>
 
-                    <label htmlFor="lastName">Last Name</label>
+                    <label htmlFor="lastName">Last name</label>
                     <Field id="lastName" name="lastName" placeholder="Doe" /><br/>
 
-                    <label htmlFor="phoneNumber">Phone Number</label>
+                    <label htmlFor="phoneNumber">Phone number</label>
                     <Field id="phoneNumber" name="phoneNumber" placeholder="Doe" /><br/>
 
                     <label htmlFor="email">Email</label>
