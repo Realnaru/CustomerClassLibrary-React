@@ -1,9 +1,6 @@
 import React from "react";
 import { Formik, Field, Form } from "formik";
-//import setData from "../Common/setdata.component";
-//import {CustomerService} from "../Common/customer.service";
 import { Link } from "react-router-dom";
-//const service = new CustomerService();
 const service = require("../Common/services/customer.service");
 
 export class CustomerAddForm extends React.Component {
@@ -61,8 +58,9 @@ export class CustomerAddForm extends React.Component {
               ],
             };
 
-            service.createCustomer(customer);
-            setTimeout(() => (window.location.href = "/customers"), 500);
+            service.createCustomer(customer).then(() => {
+              this.props.history.push('/customers')
+            });
           }}
         >
           <Form>

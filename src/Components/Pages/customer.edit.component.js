@@ -1,8 +1,6 @@
 import React from "react";
 import { Formik, Field, Form } from 'formik';
-//import {CustomerService} from "../Common/customer.service";
 import {Link} from "react-router-dom";
-//const service = new CustomerService();
 const service = require('../Common/services/customer.service');
 
 export class CustomerEditForm extends React.Component {
@@ -36,7 +34,6 @@ export class CustomerEditForm extends React.Component {
                     service.updateCustomer(values, customerId).then(() => {
                         this.props.history.push('/customers');
                     });
-                    //setTimeout(() => {window.location.href = '/customers'}, 500);
                 }}
             >
                 <Form>

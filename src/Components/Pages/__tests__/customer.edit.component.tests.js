@@ -41,6 +41,7 @@ describe("Customer edit page tests", () => {
       "Total purchases amount",
     ]);
     expect(instance.findAllByType("input")[4].children).toStrictEqual([]);
+    expect(instance.findByType('button').children).toStrictEqual(['Submit']);
   });
 
   test("Should be rendered correctly with data", (done) => {
@@ -76,6 +77,11 @@ describe("Customer edit page tests", () => {
     expect(instance.findAllByType("label")[4].children).toStrictEqual([
       "Total purchases amount",
     ]);
+
+    expect(instance.findAllByType("input")[0].children).toStrictEqual([]);
+    expect(instance.findAllByType("input")[1].children).toStrictEqual([]);
+    expect(instance.findAllByType("input")[2].children).toStrictEqual([]);
+    expect(instance.findAllByType("input")[3].children).toStrictEqual([]);
 
     setTimeout(() => {
       expect(instance.findAllByType("input")[0].props.value).toBe("John");

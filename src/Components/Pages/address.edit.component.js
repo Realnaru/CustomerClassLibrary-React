@@ -1,8 +1,6 @@
 import React from "react";
 import { Formik, Field, Form } from 'formik';
-//import {AddressService} from "../Common/address.service";
 import {Link} from "react-router-dom";
-// service = new AddressService();
 const service = require('../Common/services/address.service');
 
 
@@ -50,13 +48,13 @@ export class AddressEditForm extends React.Component {
                         <label htmlFor="city">City</label>
                         <Field id="city" name="city" placeholder="city"/><br/>
 
-                        <label htmlFor="postalCode">Total purchases amount</label>
+                        <label htmlFor="postalCode">Postal code</label>
                         <Field id="postalСode" name="postalCode" placeholder="Doe" /><br/>
 
-                        <label htmlFor="state">Total purchases amount</label>
+                        <label htmlFor="state">State</label>
                         <Field id="state" name="state" placeholder="Doe" /><br/>
 
-                        <label htmlFor="country">Total purchases amount</label>
+                        <label htmlFor="country">Country</label>
                         <Field id="country" name="country" placeholder="Doe" /><br/>
 
                         <button type="submit">Submit</button>

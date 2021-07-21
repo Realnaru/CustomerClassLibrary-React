@@ -53,5 +53,6 @@ describe("Customer add page tests", () => {
     expect(instance.findAllByType("label")[12].children).toStrictEqual([
       "Note",
     ]);
+    expect(instance.findByType('button').children).toStrictEqual(['Submit']);
   });
 });

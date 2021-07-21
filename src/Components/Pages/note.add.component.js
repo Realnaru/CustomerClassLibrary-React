@@ -1,8 +1,6 @@
 import React from "react"
 import { Formik, Field, Form } from 'formik';
-//import {NoteService} from "../Common/note.service";
 import {Link} from "react-router-dom";
-//const service = new NoteService();
 const service = require('../Common/services/note.service');
 
 export class NoteAddForm extends React.Component {
@@ -31,7 +29,7 @@ export class NoteAddForm extends React.Component {
                     }}
                 >
                     <Form>
-                        <label htmlFor="note">First Name</label>
+                        <label htmlFor="note">Note</label>
                         <Field id="note" name="note" placeholder="Note" /><br/>
 
                         <button type="submit">Submit</button>
