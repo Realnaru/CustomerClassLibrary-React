@@ -67,11 +67,12 @@ class App extends React.Component {
               path="/addresses/:id/edit"
               render={(props) => <AddressEditForm {...props} />}
             />
-            <Route path={"/addresses/:id"} component={AddressDetails} />
+
             <Route
                 path="/addresses/:id/delete"
                 render={(props) => <AddressDelete {...props} />}
             />
+            <Route path={"/addresses/:id"} component={AddressDetails} />
             <Route path={"/notes/:id/edit"} component={NoteEditForm} />
             <Route path={"/notes/:id/add"} component={NoteAddForm} />
             <Route path={"/notes"} component={NotesTable} />

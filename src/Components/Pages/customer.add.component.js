@@ -59,7 +59,7 @@ export class CustomerAddForm extends React.Component {
             };
 
             service.createCustomer(customer).then(() => {
-              this.props.history.push('/customers')
+              this.props.history.push("/customers");
             });
           }}
         >

@@ -1,4 +1,3 @@
-
 // function getEntitiesData(url, component){
 //     fetch(url).then(result => {
 //         return result.json().then(data => {
@@ -6,9 +5,9 @@
 //         })
 //     })
 // }
-function getEntitiesData(url){
-    return fetch(url).then(result => {
-        return result.json();
-    })
+function getEntitiesData(url) {
+  return fetch(url).then((result) => {
+    return result.json();
+  });
 }
 export default getEntitiesData;

@@ -1,13 +1,12 @@
 import React from "react";
-import {Link, withRouter} from "react-router-dom";
-import {Router} from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import { Router } from "react-router-dom";
 const service = require("./services/customer.service");
 
-
 class CustomerTableRow extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
   render() {
     const customer = this.props.customer;
     return (
@@ -32,7 +31,7 @@ class CustomerTableRow extends React.Component {
             Details
           </Link>
           &nbsp;
-          <Link to={'customers/' + customer.customerId + '/delete'}>
+          <Link to={"customers/" + customer.customerId + "/delete"}>
             Delete
           </Link>
         </td>

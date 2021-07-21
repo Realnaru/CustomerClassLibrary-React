@@ -41,7 +41,7 @@ describe("Customer edit page tests", () => {
       "Total purchases amount",
     ]);
     expect(instance.findAllByType("input")[4].children).toStrictEqual([]);
-    expect(instance.findByType('button').children).toStrictEqual(['Submit']);
+    expect(instance.findByType("button").children).toStrictEqual(["Submit"]);
   });
 
   test("Should be rendered correctly with data", (done) => {
