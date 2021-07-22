@@ -1,46 +1,19 @@
-import getEntitiesData from "./entities.getdata.component";
-import getData from "./getdata.component";
-import setData from "./setdata.component";
-import deleteData from "./deletedata.component";
+import { apiManager } from "./api.manager";
 
-//export class AddressService {
 export function createAddress(values) {
-  // fetch('/api/Addresses/', {method: 'POST', body: JSON.stringify(values), headers: {
-  //         'Content-Type': 'application/json'
-  //     }}).then(response => {console.log(response)});
-  return setData(values, "/api/Addresses/", "POST");
+  return apiManager.setData(values, "/api/Addresses/", "POST");
 }
 export function getAddresses(customerId) {
-  // fetch('/api/Addresses/' + customerId).then(result => {
-  //     return result.json().then(data => {
-  //         component.setState({
-  //             entities: data,
-  //             isLoaded: true});
-  //     });
-  // });
-  return getEntitiesData("/api/Addresses/" + customerId);
+  return apiManager.getEntitiesData("/api/Addresses/" + customerId);
 }
 
 export function getAddress(addressId) {
-  // fetch('/api/Addresses/' + addressId).then(result => {
-  //     result.json().then(data => {
-  //         component.setState({
-  //             entity: data
-  //         })
-  //     })
-  // });
-  return getData("/api/Addresses/" + addressId);
+  return apiManager.getData("/api/Addresses/" + addressId);
 }
 export function updateAddress(values, addressId) {
-  // fetch('/api/Addresses/' + addressId, {method: 'PUT', body: JSON.stringify(values), headers: {
-  //         'Content-Type': 'application/json'
-  //     }}).then(response => {console.log(response)});
-  // console.log(JSON.stringify(values));
-  return setData(values, "/api/Addresses/" + addressId, "PUT");
+  return apiManager.setData(values, "/api/Addresses/" + addressId, "PUT");
 }
 
 export function deleteAddress(addressId) {
-  //fetch('/api/Addresses/' + addressId,{method: 'DELETE'});
-  return deleteData("/api/Addresses/" + addressId);
+  return apiManager.deleteData("/api/Addresses/" + addressId);
 }
-//}

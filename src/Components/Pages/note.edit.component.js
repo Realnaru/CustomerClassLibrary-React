@@ -29,13 +29,13 @@ export class NoteEditForm extends React.Component {
           enableReinitialize
           onSubmit={(values) => {
             const noteId = this.props.match.params.id;
-            service.updateNote(values, noteId);
-            setTimeout(
-              () =>
-                (window.location.href =
-                  "/notes/?customerId=" + this.state.entity.customerId),
-              500
-            );
+            service
+              .updateNote(values, noteId)
+              .then(
+                this.props.history.push(
+                  "/notes/?customerId=" + this.state.entity.customerId
+                )
+              );
           }}
         >
           <Form>
@@ -46,7 +46,9 @@ export class NoteEditForm extends React.Component {
             <button type="submit">Submit</button>
           </Form>
         </Formik>
-        <Link to={"/customers"}>Back to customers list</Link>
+        <Link to={"/notes/?customerId=" + this.state.entity.customerId}>
+          Back to notes
+        </Link>
       </div>
     );
   }

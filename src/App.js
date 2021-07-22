@@ -13,8 +13,9 @@ import { AddressEditForm } from "./Components/Pages/address.edit.component";
 import { NoteEditForm } from "./Components/Pages/note.edit.component";
 import { NoteAddForm } from "./Components/Pages/note.add.component";
 import { AddressAddForm } from "./Components/Pages/address.add.component";
-import {CustomerDelete} from "./Components/Pages/customer.delete.component";
-import {AddressDelete} from "./Components/Pages/address.delete.component";
+import { CustomerDelete } from "./Components/Pages/customer.delete.component";
+import { AddressDelete } from "./Components/Pages/address.delete.component";
+import { NoteDelete } from "./Components/Pages/note.delete.component";
 
 class App extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        {/*<Errors />*/}
+        <Errors />
         <Router>
           <Link to={"/customers"}>Customers list</Link>
           <Switch>
@@ -43,14 +44,14 @@ class App extends React.Component {
               render={(props) => <CustomerEditForm {...props} />}
             />
             <Route
-                path="/customers/add"
-                exact={true}
-                render={(props) => <CustomerAddForm {...props} />}
+              path="/customers/add"
+              exact={true}
+              render={(props) => <CustomerAddForm {...props} />}
             />
             <Route
-                path="/customers/:id/delete"
-                exact={true}
-                render={(props) => <CustomerDelete {...props} />}
+              path="/customers/:id/delete"
+              exact={true}
+              render={(props) => <CustomerDelete {...props} />}
             />
             <Route
               path={"/addresses/"}
@@ -60,21 +61,29 @@ class App extends React.Component {
             <Route
               path={"/addresses/:id/add"}
               exact={true}
-              component={AddressAddForm}
+              render={(props) => <AddressAddForm {...props} />}
             />
-            {/*<Route path={"/addresses/:id/edit"} exact={true} component={AddressEditForm}/>*/}
             <Route
               path="/addresses/:id/edit"
               render={(props) => <AddressEditForm {...props} />}
             />
-
             <Route
-                path="/addresses/:id/delete"
-                render={(props) => <AddressDelete {...props} />}
+              path="/addresses/:id/delete"
+              render={(props) => <AddressDelete {...props} />}
             />
             <Route path={"/addresses/:id"} component={AddressDetails} />
-            <Route path={"/notes/:id/edit"} component={NoteEditForm} />
-            <Route path={"/notes/:id/add"} component={NoteAddForm} />
+            <Route
+              path={"/notes/:id/edit"}
+              render={(props) => <NoteEditForm {...props} />}
+            />
+            <Route
+              path={"/notes/:id/add"}
+              render={(props) => <NoteAddForm {...props} />}
+            />
+            <Route
+              path="/notes/:id/delete"
+              render={(props) => <NoteDelete {...props} />}
+            />
             <Route path={"/notes"} component={NotesTable} />
           </Switch>
         </Router>

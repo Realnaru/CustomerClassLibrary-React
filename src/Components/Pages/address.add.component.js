@@ -1,7 +1,5 @@
 import React from "react";
 import { Formik, Field, Form } from "formik";
-//import {AddressService} from "../Common/address.service";
-//const service = new AddressService();
 const service = require("../Common/services/address.service");
 
 export class AddressAddForm extends React.Component {
@@ -35,13 +33,13 @@ export class AddressAddForm extends React.Component {
               country: values.country,
             };
 
-            service.createAddress(address);
-            setTimeout(
-              () =>
-                (window.location.href =
-                  "/addresses/?customerId=" + this.props.match.params.id),
-              100
-            );
+            service
+              .createAddress(address)
+              .then(
+                this.props.history.push(
+                  "/addresses/?customerId=" + this.props.match.params.id
+                )
+              );
           }}
         >
           <Form>

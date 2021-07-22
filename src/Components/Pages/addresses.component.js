@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import AddressTableRow from "../Common/address.row";
-//import {AddressService} from "../Common/address.service";
 const service = require("../Common/services/address.service");
 
 export class AddressesTable extends React.Component {

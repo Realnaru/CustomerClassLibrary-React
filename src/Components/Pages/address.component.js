@@ -52,8 +52,10 @@ export class AddressDetails extends React.Component {
           <br />
           <label>{this.state.entity.country}</label>
           <br />
+          <Link to={"/addresses?customerId=" + this.state.entity.customerId}>
+            Back to addresses
+          </Link>
         </div>
-        <Link to={"/customers"}>Back to customers list</Link>
       </>
     );
   }

@@ -29,13 +29,13 @@ export class AddressEditForm extends React.Component {
           enableReinitialize
           onSubmit={(values) => {
             const addressId = this.props.match.params.id;
-            service.updateAddress(values, addressId);
-            setTimeout(
-              () =>
-                (window.location.href =
-                  "/addresses/?customerId=" + this.state.entity.customerId),
-              500
-            );
+            service
+              .updateAddress(values, addressId)
+              .then(
+                this.props.history.push(
+                  "/addresses/?customerId=" + this.state.entity.customerId
+                )
+              );
           }}
         >
           <Form>
@@ -70,7 +70,9 @@ export class AddressEditForm extends React.Component {
             <button type="submit">Submit</button>
           </Form>
         </Formik>
-        <Link to={"/customers"}>Back to customers list</Link>
+        <Link to={"/addresses/?customerId=" + this.state.entity.customerId}>
+          Back to addresses
+        </Link>
       </div>
     );
   }

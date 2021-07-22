@@ -1,8 +1,7 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
-//import {NoteService} from "./note.service";
-//const service = new NoteService();
-const service = require("./services/note.service");
+//const service = require("../Common/services/note.service");
 
 class NoteTableRow extends React.Component {
   render() {
@@ -13,13 +12,10 @@ class NoteTableRow extends React.Component {
         <td>
           <Link to={"/notes/" + note.noteId + "/edit"}>Edit</Link>&nbsp;
           <Link
-            to={"#"}
-            onClick={() => {
-              service.deleteNote(note.noteId);
-              setTimeout(() => {
-                window.location.href = "/notes/?customerId=" + note.customerId;
-              }, 500);
-            }}
+            to={"/notes/" + note.noteId + "/delete"}
+            // onClick={() => {
+            //   service.deleteNote(note.noteId).then(this.props.history.goBack);
+            // }}
           >
             Delete
           </Link>
@@ -28,4 +24,4 @@ class NoteTableRow extends React.Component {
     );
   }
 }
-export default NoteTableRow;
+export default withRouter(NoteTableRow);

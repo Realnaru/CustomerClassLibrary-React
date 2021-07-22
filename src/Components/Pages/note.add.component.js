@@ -22,13 +22,13 @@ export class NoteAddForm extends React.Component {
               note: values.note,
             };
 
-            service.createNote(note);
-            setTimeout(
-              () =>
-                (window.location.href =
-                  "/notes/?customerId=" + this.props.match.params.id),
-              500
-            );
+            service
+              .createNote(note)
+              .then(
+                this.props.history.push(
+                  "/notes/?customerId=" + this.props.match.params.id
+                )
+              );
           }}
         >
           <Form>

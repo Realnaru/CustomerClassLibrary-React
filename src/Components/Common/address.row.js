@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const service = require("./services/address.service");
 
 class AddressTableRow extends React.Component {
   render() {
@@ -17,7 +16,8 @@ class AddressTableRow extends React.Component {
         <td>
           <Link to={"/addresses/" + address.addressId + "/edit"}>Edit</Link>
           &nbsp;
-          <Link to={"/addresses/" + address.addressId}>Details</Link>&nbsp;
+          <Link to={"/addresses/" + address.addressId}>Details</Link>
+          &nbsp;
           <Link to={"/addresses/" + address.addressId + "/delete"}>Delete</Link>
         </td>
       </tr>

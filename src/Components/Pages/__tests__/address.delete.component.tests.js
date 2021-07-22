@@ -1,6 +1,5 @@
 import ReactTestRenderer from "react-test-renderer";
 import { AddressDelete } from "../address.delete.component";
-import { AddressDetails } from "../address.component";
 const service = require("../../Common/services/address.service");
 
 jest.mock("../../Common/services/address.service");
