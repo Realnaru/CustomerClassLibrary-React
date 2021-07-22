@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
-//const service = require("../Common/services/note.service");
+const service = require("../Common/services/note.service");
 
 class NoteTableRow extends React.Component {
   render() {
@@ -11,14 +11,16 @@ class NoteTableRow extends React.Component {
         <td>{note.note}</td>
         <td>
           <Link to={"/notes/" + note.noteId + "/edit"}>Edit</Link>&nbsp;
-          <Link
-            to={"/notes/" + note.noteId + "/delete"}
-            // onClick={() => {
-            //   service.deleteNote(note.noteId).then(this.props.history.goBack);
-            // }}
+          <a
+            //to={"/notes/" + note.noteId + "/delete"}
+            onClick={() => {
+              service.deleteNote(note.noteId).then(() => {console.log('success'); this.props.history.goBack()} ).catch(error => {
+                  console.log(error);
+              });
+            }}
           >
             Delete
-          </Link>
+          </a>
         </td>
       </tr>
     );
