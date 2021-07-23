@@ -17,6 +17,7 @@ import { CustomerDelete } from "./Components/Pages/customer.delete.component";
 import { AddressDelete } from "./Components/Pages/address.delete.component";
 import { NoteDelete } from "./Components/Pages/note.delete.component";
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);

@@ -1,4 +1,6 @@
 import { apiManager } from "../api.manager";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 const fetchMock = require("fetch-mock-jest");
 
 fetchMock
