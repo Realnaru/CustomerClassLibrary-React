@@ -1,3 +1,4 @@
+import React from "react";
 import ReactTestRenderer from "react-test-renderer";
 import { NoteEditForm } from "../note.edit.component";
 const service = require("../../Common/services/note.service");

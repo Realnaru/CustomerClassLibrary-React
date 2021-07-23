@@ -6,6 +6,8 @@ import {
   deleteCustomer,
 } from "../customer.service";
 
+import regeneratorRuntime from "regenerator-runtime";
+
 jest.mock("../api.manager", () => {
   return {
     apiManager: {

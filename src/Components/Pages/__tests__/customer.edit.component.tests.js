@@ -1,3 +1,4 @@
+import React from "react";
 import ReactTestRenderer from "react-test-renderer";
 import { CustomerEditForm } from "../customer.edit.component";
 const service = require("../../Common/services/customer.service");

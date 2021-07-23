@@ -1,3 +1,4 @@
+import React from "react";
 import ReactTestRenderer from "react-test-renderer";
 import { CustomerAddForm } from "../customer.add.component";
 const service = require("../../Common/services/customer.service");
@@ -53,6 +54,6 @@ describe("Customer add page tests", () => {
     expect(instance.findAllByType("label")[12].children).toStrictEqual([
       "Note",
     ]);
-    expect(instance.findByType('button').children).toStrictEqual(['Submit']);
+    expect(instance.findByType("button").children).toStrictEqual(["Submit"]);
   });
 });

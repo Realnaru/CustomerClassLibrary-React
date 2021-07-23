@@ -1,3 +1,4 @@
+import React from "react";
 import ReactTestRenderer from "react-test-renderer";
 import { CustomersTable } from "../customers.component";
 import CustomerTableRow from "../../Common/customer.row";

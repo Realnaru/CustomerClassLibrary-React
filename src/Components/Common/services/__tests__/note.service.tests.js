@@ -6,6 +6,8 @@ import {
   deleteNote,
 } from "../note.service";
 
+import regeneratorRuntime from "regenerator-runtime";
+
 jest.mock("../api.manager", () => {
   return {
     apiManager: {

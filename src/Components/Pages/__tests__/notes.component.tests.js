@@ -1,3 +1,4 @@
+import React from "react";
 import ReactTestRenderer from "react-test-renderer";
 import { NotesTable } from "../notes.component";
 import NoteTableRow from "../../Common/notes.row";

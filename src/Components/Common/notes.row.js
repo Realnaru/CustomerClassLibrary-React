@@ -1,5 +1,6 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+//import { withRouter } from "react-router-dom";
+//import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 const service = require("../Common/services/note.service");
 
@@ -26,4 +27,4 @@ class NoteTableRow extends React.Component {
     );
   }
 }
-export default withRouter(NoteTableRow);
+export default NoteTableRow;

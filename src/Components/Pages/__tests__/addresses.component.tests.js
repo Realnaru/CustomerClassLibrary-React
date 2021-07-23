@@ -1,3 +1,4 @@
+import React from "react";
 import ReactTestRenderer from "react-test-renderer";
 import { AddressesTable } from "../addresses.component";
 import AddressTableRow from "../../Common/address.row";

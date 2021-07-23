@@ -1,3 +1,4 @@
+import React from "react";
 import ReactTestRenderer from "react-test-renderer";
 import { AddressDelete } from "../address.delete.component";
 const service = require("../../Common/services/address.service");

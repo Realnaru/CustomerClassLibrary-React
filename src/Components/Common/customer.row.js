@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+//import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class CustomerTableRow extends React.Component {
   constructor(props) {
@@ -37,4 +38,4 @@ class CustomerTableRow extends React.Component {
     );
   }
 }
-export default withRouter(CustomerTableRow);
+export default CustomerTableRow;

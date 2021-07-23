@@ -1,3 +1,4 @@
+import React from "react";
 import ReactTestRenderer from "react-test-renderer";
 import { AddressEditForm } from "../address.edit.component";
 const service = require("../../Common/services/address.service");

@@ -1,3 +1,4 @@
+import React from "react";
 import ReactTestRenderer from "react-test-renderer";
 import { NoteDelete } from "../note.delete.component";
 const service = require("../../Common/services/note.service");

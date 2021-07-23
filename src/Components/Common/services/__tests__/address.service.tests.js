@@ -5,6 +5,7 @@ import {
   updateAddress,
   deleteAddress,
 } from "../address.service";
+import regeneratorRuntime from "regenerator-runtime";
 
 jest.mock("../api.manager", () => {
   return {

@@ -1,3 +1,4 @@
+import React from "react";
 import ReactTestRenderer from "react-test-renderer";
 import { CustomerDetails } from "../customer.component";
 const service = require("../../Common/services/customer.service");

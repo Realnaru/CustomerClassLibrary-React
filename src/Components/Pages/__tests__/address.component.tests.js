@@ -1,3 +1,4 @@
+import React from "react";
 import ReactTestRenderer from "react-test-renderer";
 import { AddressDetails } from "../address.component";
 const service = require("../../Common/services/address.service");
@@ -6,7 +7,7 @@ jest.mock("../../Common/services/address.service");
 jest.mock("react-router-dom", () => {
   return {
     Link: () => {
-      return <a />;
+      return <a></a>;
     },
   };
 });
