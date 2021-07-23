@@ -12,12 +12,12 @@ class NoteTableRow extends React.Component {
         <td>
           <Link to={"/notes/" + note.noteId + "/edit"}>Edit</Link>&nbsp;
           <a
-            //to={"/notes/" + note.noteId + "/delete"}
-            onClick={() => {
-              service.deleteNote(note.noteId).then(() => {console.log('success'); this.props.history.goBack()} ).catch(error => {
-                  console.log(error);
-              });
-            }}
+            to={"/notes/" + note.noteId + "/delete"}
+            // onClick={() => {
+            //   service.deleteNote(note.noteId).then(() => {console.log('success'); this.props.history.goBack()} ).catch(error => {
+            //       console.log(error);
+            //   });
+            // }}
           >
             Delete
           </a>
